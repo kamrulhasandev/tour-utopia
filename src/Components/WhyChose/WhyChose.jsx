@@ -67,7 +67,9 @@ const WhyChose = () => {
                 </p>
               </div>
             </div>
+            <button className="bg-[#FF5522] w-36 font-semibold py-2 rounded-md text-white mt-2">Explore More</button>
           </div>
+          
         </div>
       </div>
     </div>

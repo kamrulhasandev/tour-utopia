@@ -1,7 +1,7 @@
 const SearchField = () => {
   return (
     <div className="">
-      <div className="max-w-screen-xl mx-auto px-5 ">
+      <div className="max-w-screen-xl mx-auto px-5">
         <div className=" p-8 bg-white rounded-lg shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
           <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
             {/* Destination Dropdown */}
