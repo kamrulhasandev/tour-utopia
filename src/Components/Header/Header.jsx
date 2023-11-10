@@ -15,11 +15,12 @@ const Header = () => {
   const handleLinkClick = () => {
     setOpen(false);
   };
-
   const { pathname } = useLocation();
 
+  
+
   return (
-    <header className="max-w-screen-xl mx-auto flex items-center justify-between relative py-2 z-10">
+    <header className=" mx-auto flex items-center justify-between fixed top-0 left-0 right-0  py-2 z-10 bg-white">
       {/* Logo */}
       <div className="pl-5">
         <img className="max-w-[150px]" src="/logo.png" alt="" />

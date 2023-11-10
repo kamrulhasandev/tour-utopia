@@ -4,6 +4,7 @@ import "swiper/css/navigation";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css/pagination";
 import "./HeroSection.css";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const slider = [
@@ -35,7 +36,7 @@ const HeroSection = () => {
   return (
     <div>
       <Swiper
-        className="mySwiper h-[calc(100vh-62px)]"
+        className="mySwiper h-[80vh]"
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -62,7 +63,8 @@ const HeroSection = () => {
                 <h1 className="text-5xl font-bold text-white">
                   {item.heading}
                 </h1>
-                <p className="text-white">{item.subheading}</p>
+                <p className="text-white text-base">{item.subheading}</p>
+                <Link to={'/destination'} className="bg-[#FF5522]  flex justify-center py-2 rounded-md text-white hover:bg-[#ec7551] transition-all w-32">Book Now</Link>
               </div>
             </div>
           </SwiperSlide>
