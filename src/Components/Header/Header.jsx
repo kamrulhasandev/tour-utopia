@@ -19,7 +19,7 @@ const Header = () => {
   const { pathname } = useLocation();
 
   return (
-    <header className="max-w-screen-xl mx-auto flex items-center justify-between relative py-2">
+    <header className="max-w-screen-xl mx-auto flex items-center justify-between relative py-2 z-10">
       {/* Logo */}
       <div className="pl-5">
         <img className="max-w-[150px]" src="/logo.png" alt="" />

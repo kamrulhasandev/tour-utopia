@@ -1,8 +1,10 @@
+import HeroSection from "./Components/HeroSection/HeroSection"
+
 function App() {
 
   return (
     <>
-      <h1 className="text-7xl font-bold text-center py-5">Hello World</h1>
+      <HeroSection/>
     </>
   )
 }
