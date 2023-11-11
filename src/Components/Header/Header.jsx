@@ -1,7 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaUser } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import ProfileDropDown from "../ProfileDropDown/ProfileDropDown";
 
 const Header = () => {
   const nav = [
@@ -12,12 +14,12 @@ const Header = () => {
   ];
 
   const [open, setOpen] = useState(false);
+
   const handleLinkClick = () => {
     setOpen(false);
   };
   const { pathname } = useLocation();
-
-  
+  const { user } = useContext(AuthContext);
 
   return (
     <header className=" mx-auto flex items-center justify-between fixed top-0 left-0 right-0  py-2 z-10 bg-white shadow-lg">
@@ -48,22 +50,34 @@ const Header = () => {
             <li>{item.name}</li>
           </Link>
         ))}
-        <Link onClick={() => setOpen(!open)} to={"/login"}>
-          <button className="md:hidden flex items-center justify-center gap-1 font-semibold text-[#6C7171]">
-            <FaUser />
-            Login/Signup
-          </button>
-        </Link>
+        {user?.email ? (
+          <div className="md:hidden">
+            <ProfileDropDown />
+          </div>
+        ) : (
+          <Link onClick={() => setOpen(!open)} to={"/login"}>
+            <button className="md:hidden flex items-center justify-center gap-1 font-semibold text-[#6C7171]">
+              <FaUser />
+              Login/Signup
+            </button>
+          </Link>
+        )}
       </ul>
 
       {/* Login - Register */}
       <div className="pr-5">
-        <Link  to={"/login"}>
-          <button className="hidden md:flex items-center justify-center gap-1 font-semibold text-[#6C7171]">
-            <FaUser />
-            Login/Signup
-          </button>
-        </Link>
+        {user?.email ? (
+          <div className="hidden md:block">
+            <ProfileDropDown />
+          </div>
+        ) : (
+          <Link to={"/login"}>
+            <button className="hidden md:flex items-center justify-center gap-1 font-semibold text-[#6C7171]">
+              <FaUser />
+              Login/Signup
+            </button>
+          </Link>
+        )}
         <button className="md:hidden" onClick={() => setOpen(!open)}>
           {open ? <FaXmark /> : <FaBars />}
         </button>

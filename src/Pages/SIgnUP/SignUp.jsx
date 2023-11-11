@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const {createUser,updateName} = useContext(AuthContext)
   const togglePasswordVisibility = () => {
     setPasswordVisible((prevVisible) => !prevVisible);
   };
@@ -30,7 +33,16 @@ const SignUp = () => {
       setError("Password must be at least 8 characters.");
       return;
     } else {
-      console.log(name, email, password, confirmPassword);
+      createUser(email, password)
+        .then((result) => {
+          const user = result.user;
+          updateName(user,name)
+          console.log(user);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
