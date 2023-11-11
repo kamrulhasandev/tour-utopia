@@ -20,7 +20,7 @@ const Header = () => {
   
 
   return (
-    <header className=" mx-auto flex items-center justify-between fixed top-0 left-0 right-0  py-2 z-10 bg-white">
+    <header className=" mx-auto flex items-center justify-between fixed top-0 left-0 right-0  py-2 z-10 bg-white shadow-lg">
       {/* Logo */}
       <div className="pl-5">
         <img className="max-w-[150px]" src="/logo.png" alt="" />
@@ -58,7 +58,7 @@ const Header = () => {
 
       {/* Login - Register */}
       <div className="pr-5">
-        <Link onClick={() => setOpen(!open)} to={"/login"}>
+        <Link  to={"/login"}>
           <button className="hidden md:flex items-center justify-center gap-1 font-semibold text-[#6C7171]">
             <FaUser />
             Login/Signup
