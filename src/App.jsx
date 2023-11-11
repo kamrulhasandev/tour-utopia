@@ -16,8 +16,8 @@ function App() {
       </div>
       <Category />
       <WhyChose />
-      <Testimonials />
       <Packages/>
+      <Testimonials />
     </>
   );
 }

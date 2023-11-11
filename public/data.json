@@ -1,527 +1,501 @@
 [
     {
-        "category": "Beach Resorts",
-        "items": [
-            {
-                "name": "Sunset Paradise Resort",
-                "location": "Maldives",
-                "price": "$500 per night",
-                "image": "sunset_paradise.jpg",
-                "rating": 4.8,
-                "people": "Couples",
-                "details": "Luxurious beachfront resort with private villas and overwater bungalows.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "breakfast_included": true
-                },
-                "gallery_images": [
-                    "sunset_paradise_1.jpg",
-                    "sunset_paradise_2.jpg",
-                    "sunset_paradise_3.jpg"
-                ]
-            },
-            {
-                "name": "Azure Shores Retreat",
-                "location": "Bora Bora",
-                "price": "$600 per night",
-                "image": "azure_shores.jpg",
-                "rating": 4.9,
-                "people": "Families",
-                "details": "Family-friendly resort with kids' activities and stunning lagoon views.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "all_inclusive": true
-                },
-                "gallery_images": [
-                    "azure_shores_1.jpg",
-                    "azure_shores_2.jpg",
-                    "azure_shores_3.jpg"
-                ]
-            },
-            {
-                "name": "Tropical Serenity Lodge",
-                "location": "Costa Rica",
-                "price": "$450 per night",
-                "image": "tropical_serenity.jpg",
-                "rating": 4.7,
-                "people": "Nature enthusiasts",
-                "details": "Surrounded by rainforest, perfect for eco-friendly vacations and wildlife exploration.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "guided_tours": true
-                },
-                "gallery_images": [
-                    "tropical_serenity_1.jpg",
-                    "tropical_serenity_2.jpg",
-                    "tropical_serenity_3.jpg"
-                ]
-            },
-            {
-                "name": "Golden Sands Retreat",
-                "location": "Phuket",
-                "price": "$550 per night",
-                "image": "golden_sands.jpg",
-                "rating": 4.6,
-                "people": "Honeymooners",
-                "details": "Romantic getaway with private beaches and stunning sunsets.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "spa_services": true
-                },
-                "gallery_images": [
-                    "golden_sands_1.jpg",
-                    "golden_sands_2.jpg",
-                    "golden_sands_3.jpg"
-                ]
-            },
-            {
-                "name": "Coral Cove Resort",
-                "location": "Fiji",
-                "price": "$480 per night",
-                "image": "coral_cove.jpg",
-                "rating": 4.5,
-                "people": "Snorkelers",
-                "details": "Beachfront resort with vibrant coral reefs for snorkeling adventures.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "water_sports": true
-                },
-                "gallery_images": [
-                    "coral_cove_1.jpg",
-                    "coral_cove_2.jpg",
-                    "coral_cove_3.jpg"
-                ]
-            }
+        "id": 1,
+        "category": "Adventure",
+        "location": "Paris",
+        "name": "Paris Adventure Tour",
+        "details": "Experience the thrill of adventure in the heart of Paris. Explore hidden gems, climb iconic landmarks, and enjoy breathtaking views.",
+        "price": 599.99,
+        "image": "./paris1.jpg",
+        "gallery": [
+            "paris_adventure_1.jpg",
+            "paris_adventure_2.jpg",
+            "paris_adventure_3.jpg"
+        ],
+        "duration": "2 days",
+        "includesMeals": true,
+        "difficultyLevel": "Moderate",
+        "meetingPoint": "Eiffel Tower Visitor Center",
+        "departureTime": "9:00 AM",
+        "returnTime": "6:00 PM",
+        "highlights": [
+            "Explore hidden gems in Paris",
+            "Climb the Eiffel Tower for panoramic views",
+            "Discover secret landmarks known to locals",
+            "Experience the thrill of urban adventure"
+        ],
+        "recommendedGear": [
+            "Comfortable hiking shoes",
+            "Weather-appropriate clothing",
+            "Water bottle",
+            "Camera"
         ]
     },
     {
-        "category": "City Hotels",
-        "items": [
-            {
-                "name": "Metropolitan Plaza Hotel",
-                "location": "New York City",
-                "price": "$300 per night",
-                "image": "metropolitan_plaza.jpg",
-                "rating": 4.5,
-                "people": "Business travelers",
-                "details": "Centrally located hotel with modern amenities and skyline views.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "parking_available": true
-                },
-                "gallery_images": [
-                    "metropolitan_plaza_1.jpg",
-                    "metropolitan_plaza_2.jpg",
-                    "metropolitan_plaza_3.jpg"
-                ]
-            },
-            {
-                "name": "Harborview Suites",
-                "location": "San Francisco",
-                "price": "$250 per night",
-                "image": "harborview_suites.jpg",
-                "rating": 4.6,
-                "people": "Sightseers",
-                "details": "Charming suites overlooking the bay, close to major attractions.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "fitness_center": true
-                },
-                "gallery_images": [
-                    "harborview_suites_1.jpg",
-                    "harborview_suites_2.jpg",
-                    "harborview_suites_3.jpg"
-                ]
-            },
-            {
-                "name": "Urban Elegance Hotel",
-                "location": "Paris",
-                "price": "$350 per night",
-                "image": "urban_elegance.jpg",
-                "rating": 4.7,
-                "people": "Culture enthusiasts",
-                "details": "Elegant hotel in the heart of Paris, steps away from museums and theaters.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "room_service": true
-                },
-                "gallery_images": [
-                    "urban_elegance_1.jpg",
-                    "urban_elegance_2.jpg",
-                    "urban_elegance_3.jpg"
-                ]
-            },
-            {
-                "name": "Harmony Towers",
-                "location": "Tokyo",
-                "price": "$320 per night",
-                "image": "harmony_towers.jpg",
-                "rating": 4.8,
-                "people": "Tech enthusiasts",
-                "details": "Modern hotel with tech-savvy amenities in the bustling city of Tokyo.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "business_center": true
-                },
-                "gallery_images": [
-                    "harmony_towers_1.jpg",
-                    "harmony_towers_2.jpg",
-                    "harmony_towers_3.jpg"
-                ]
-            },
-            {
-                "name": "Riverside Retreat",
-                "location": "London",
-                "price": "$280 per night",
-                "image": "riverside_retreat.jpg",
-                "rating": 4.6,
-                "people": "History buffs",
-                "details": "Historic hotel with views of the Thames River, near iconic landmarks.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "guided_tours": true
-                },
-                "gallery_images": [
-                    "riverside_retreat_1.jpg",
-                    "riverside_retreat_2.jpg",
-                    "riverside_retreat_3.jpg"
-                ]
-            }
+        "id": 2,
+        "category": "Adventure",
+        "location": "Paris",
+        "name": "Seine Kayaking Expedition",
+        "details": "Embark on a thrilling kayaking adventure along the Seine River. Explore the city from a unique perspective, paddle past iconic landmarks, and enjoy the excitement of urban water exploration.",
+        "price": 649.99,
+        "image": "./paris2.jpg",
+        "gallery": [
+            "paris_kayaking_1.jpg",
+            "paris_kayaking_2.jpg",
+            "paris_kayaking_3.jpg"
+        ],
+        "duration": "1.5 days",
+        "includesMeals": true,
+        "difficultyLevel": "Intermediate",
+        "meetingPoint": "Seine River Kayak Rentals",
+        "departureTime": "10:00 AM",
+        "returnTime": "4:00 PM",
+        "highlights": [
+            "Kayak through historic Parisian waterways",
+            "Pass by famous landmarks from the water",
+            "Expert-led kayaking experience",
+            "Enjoy a riverside picnic"
+        ],
+        "recommendedGear": [
+            "Kayaking gear provided",
+            "Sunscreen",
+            "Waterproof camera",
+            "Snacks"
         ]
     },
     {
-        "category": "Mountain Lodges",
-        "items": [
-            {
-                "name": "Alpine Retreat",
-                "location": "Swiss Alps",
-                "price": "$400 per night",
-                "image": "alpine_retreat.jpg",
-                "rating": 4.7,
-                "people": "Adventure seekers",
-                "details": "Cozy lodge nestled in the Swiss Alps, offering breathtaking mountain views.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "hiking_trails": true
-                },
-                "gallery_images": [
-                    "alpine_retreat_1.jpg",
-                    "alpine_retreat_2.jpg",
-                    "alpine_retreat_3.jpg"
-                ]
-            },
-            {
-                "name": "Rocky Mountain Haven",
-                "location": "Colorado, USA",
-                "price": "$350 per night",
-                "image": "rocky_mountain_haven.jpg",
-                "rating": 4.6,
-                "people": "Nature lovers",
-                "details": "Secluded lodge surrounded by the beauty of the Rocky Mountains, perfect for wildlife enthusiasts.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "ski_in_ski_out": true
-                },
-                "gallery_images": [
-                    "rocky_mountain_haven_1.jpg",
-                    "rocky_mountain_haven_2.jpg",
-                    "rocky_mountain_haven_3.jpg"
-                ]
-            },
-            {
-                "name": "Forest Serenity Lodge",
-                "location": "Canadian Rockies",
-                "price": "$380 per night",
-                "image": "forest_serenity.jpg",
-                "rating": 4.8,
-                "people": "Peace seekers",
-                "details": "Lodge surrounded by the serenity of the Canadian Rockies, offering a tranquil escape.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "fireplace": true
-                },
-                "gallery_images": [
-                    "forest_serenity_1.jpg",
-                    "forest_serenity_2.jpg",
-                    "forest_serenity_3.jpg"
-                ]
-            },
-            {
-                "name": "Snowy Peaks Lodge",
-                "location": "Siberian Mountains",
-                "price": "$420 per night",
-                "image": "snowy_peaks.jpg",
-                "rating": 4.5,
-                "people": "Winter sports enthusiasts",
-                "details": "Ideal lodge for those seeking snowy adventures in the Siberian Mountains.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "ski_rental": true
-                },
-                "gallery_images": [
-                    "snowy_peaks_1.jpg",
-                    "snowy_peaks_2.jpg",
-                    "snowy_peaks_3.jpg"
-                ]
-            },
-            {
-                "name": "Majestic Pines Lodge",
-                "location": "Pacific Northwest, USA",
-                "price": "$390 per night",
-                "image": "majestic_pines.jpg",
-                "rating": 4.7,
-                "people": "Photographers",
-                "details": "Lodge surrounded by towering pines in the Pacific Northwest, offering stunning photo opportunities.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "photography_workshops": true
-                },
-                "gallery_images": [
-                    "majestic_pines_1.jpg",
-                    "majestic_pines_2.jpg",
-                    "majestic_pines_3.jpg"
-                ]
-            }
+        "id": 3,
+        "category": "Adventure",
+        "location": "Paris",
+        "name": "Rooftop Ziplining Adventure",
+        "details": "Soar above the Parisian skyline on a thrilling rooftop ziplining adventure. Experience an adrenaline rush as you glide between iconic buildings, enjoying breathtaking views of the city below.",
+        "price": 799.99,
+        "image": "./paris3.jpg",
+        "gallery": [
+            "paris_ziplining_1.jpg",
+            "paris_ziplining_2.jpg",
+            "paris_ziplining_3.jpg"
+        ],
+        "duration": "1 day",
+        "includesMeals": true,
+        "difficultyLevel": "Advanced",
+        "meetingPoint": "Rooftop Zipline HQ",
+        "departureTime": "8:00 AM",
+        "returnTime": "5:00 PM",
+        "highlights": [
+            "Zipline between iconic Parisian buildings",
+            "Panoramic views of the city",
+            "Professional ziplining guides",
+            "Gourmet rooftop lunch included"
+        ],
+        "recommendedGear": [
+            "Safety harness and equipment provided",
+            "Closed-toe shoes",
+            "Comfortable clothing",
+            "Bravery and excitement!"
         ]
     },
     {
-        "category": "Historical Inns",
-        "items": [
-            {
-                "name": "Colonial Manor Inn",
-                "location": "Williamsburg, USA",
-                "price": "$280 per night",
-                "image": "colonial_manor.jpg",
-                "rating": 4.5,
-                "people": "History enthusiasts",
-                "details": "Charming inn with colonial architecture, transporting guests to the 18th century.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "guided_tours": true
-                },
-                "gallery_images": [
-                    "colonial_manor_1.jpg",
-                    "colonial_manor_2.jpg",
-                    "colonial_manor_3.jpg"
-                ]
-            },
-            {
-                "name": "Renaissance Palace Inn",
-                "location": "Florence, Italy",
-                "price": "$350 per night",
-                "image": "renaissance_palace.jpg",
-                "rating": 4.7,
-                "people": "Art lovers",
-                "details": "Elegant inn with Renaissance-era décor, located in the heart of Florence's historic center.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "art_gallery_access": true
-                },
-                "gallery_images": [
-                    "renaissance_palace_1.jpg",
-                    "renaissance_palace_2.jpg",
-                    "renaissance_palace_3.jpg"
-                ]
-            },
-            {
-                "name": "Victorian Gardens Inn",
-                "location": "London, UK",
-                "price": "$320 per night",
-                "image": "victorian_gardens.jpg",
-                "rating": 4.6,
-                "people": "Garden enthusiasts",
-                "details": "Quaint inn with Victorian charm, surrounded by picturesque gardens in London.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "afternoon_tea_service": true
-                },
-                "gallery_images": [
-                    "victorian_gardens_1.jpg",
-                    "victorian_gardens_2.jpg",
-                    "victorian_gardens_3.jpg"
-                ]
-            },
-            {
-                "name": "Medieval Castle Inn",
-                "location": "Prague, Czech Republic",
-                "price": "$300 per night",
-                "image": "medieval_castle.jpg",
-                "rating": 4.8,
-                "people": "Castle enthusiasts",
-                "details": "Unique inn set within a medieval castle, providing an authentic historical experience.",
-                "basic_information": {
-                    "check_in": "3:00 PM",
-                    "check_out": "12:00 PM",
-                    "wifi": true,
-                    "castle_tours": true
-                },
-                "gallery_images": [
-                    "medieval_castle_1.jpg",
-                    "medieval_castle_2.jpg",
-                    "medieval_castle_3.jpg"
-                ]
-            },
-            {
-                "name": "Revolutionary Inn",
-                "location": "Boston, USA",
-                "price": "$290 per night",
-                "image": "revolutionary_inn.jpg",
-                "rating": 4.7,
-                "people": "Patriotic history buffs",
-                "details": "Inn with a rich history from the Revolutionary era, located in the heart of Boston.",
-                "basic_information": {
-                    "check_in": "4:00 PM",
-                    "check_out": "11:00 AM",
-                    "wifi": true,
-                    "historic_district_location": true
-                },
-                "gallery_images": [
-                    "revolutionary_inn_1.jpg",
-                    "revolutionary_inn_2.jpg",
-                    "revolutionary_inn_3.jpg"
-                ]
-            }
+        "id": 4,
+        "category": "Adventure",
+        "location": "Paris",
+        "name": "Urban Rock Climbing Challenge",
+        "details": "Conquer the urban landscape with a rock climbing challenge in the heart of Paris. Scale iconic structures, test your climbing skills, and enjoy breathtaking views of the city from new heights.",
+        "price": 699.99,
+        "image": "./paris4.jpg",
+        "gallery": [
+            "paris_rock_climbing_1.jpg",
+            "paris_rock_climbing_2.jpg",
+            "paris_rock_climbing_3.jpg"
+        ],
+        "duration": "2 days",
+        "includesMeals": true,
+        "difficultyLevel": "Expert",
+        "meetingPoint": "Urban Climbers Base Camp",
+        "departureTime": "7:00 AM",
+        "returnTime": "8:00 PM",
+        "highlights": [
+            "Rock climb iconic Parisian structures",
+            "Professional climbing guides",
+            "Challenge your climbing skills",
+            "Overnight camping at climbing site"
+        ],
+        "recommendedGear": [
+            "Climbing gear provided",
+            "Sturdy climbing shoes",
+            "Camping equipment",
+            "Adventure spirit!"
         ]
     },
     {
-        "category": "Luxury Cruises",
-        "items": [
-            {
-                "name": "Royal Caribbean Paradise",
-                "location": "Caribbean",
-                "price": "$1500 per person",
-                "image": "royal_caribbean_paradise.jpg",
-                "rating": 4.9,
-                "people": "Luxury travelers",
-                "details": "Explore the Caribbean in style aboard this luxurious cruise ship with top-notch amenities.",
-                "basic_information": {
-                    "departure_port": "Miami, USA",
-                    "duration": "7 days",
-                    "wifi": true,
-                    "fine_dining": true
-                },
-                "gallery_images": [
-                    "royal_caribbean_paradise_1.jpg",
-                    "royal_caribbean_paradise_2.jpg",
-                    "royal_caribbean_paradise_3.jpg"
-                ]
-            },
-            {
-                "name": "Mediterranean Elegance Yacht",
-                "location": "Mediterranean",
-                "price": "$1800 per person",
-                "image": "mediterranean_elegance.jpg",
-                "rating": 4.8,
-                "people": "Couples",
-                "details": "Sail through the enchanting Mediterranean on this elegant yacht with personalized service.",
-                "basic_information": {
-                    "departure_port": "Barcelona, Spain",
-                    "duration": "10 days",
-                    "wifi": true,
-                    "private_balcony": true
-                },
-                "gallery_images": [
-                    "mediterranean_elegance_1.jpg",
-                    "mediterranean_elegance_2.jpg",
-                    "mediterranean_elegance_3.jpg"
-                ]
-            },
-            {
-                "name": "Arctic Explorer Cruise",
-                "location": "Arctic Circle",
-                "price": "$2200 per person",
-                "image": "arctic_explorer.jpg",
-                "rating": 4.7,
-                "people": "Adventure seekers",
-                "details": "Embark on a thrilling Arctic adventure with this luxury cruise, featuring wildlife encounters.",
-                "basic_information": {
-                    "departure_port": "Reykjavik, Iceland",
-                    "duration": "14 days",
-                    "wifi": true,
-                    "guided_excursions": true
-                },
-                "gallery_images": [
-                    "arctic_explorer_1.jpg",
-                    "arctic_explorer_2.jpg",
-                    "arctic_explorer_3.jpg"
-                ]
-            },
-            {
-                "name": "Pacific Paradise Liner",
-                "location": "South Pacific",
-                "price": "$1600 per person",
-                "image": "pacific_paradise.jpg",
-                "rating": 4.9,
-                "people": "Family travelers",
-                "details": "A luxurious cruise experience in the South Pacific, perfect for family vacations.",
-                "basic_information": {
-                    "departure_port": "Sydney, Australia",
-                    "duration": "8 days",
-                    "wifi": true,
-                    "childrens_activities": true
-                },
-                "gallery_images": [
-                    "pacific_paradise_1.jpg",
-                    "pacific_paradise_2.jpg",
-                    "pacific_paradise_3.jpg"
-                ]
-            },
-            {
-                "name": "Nile Serenity Cruise",
-                "location": "Egypt",
-                "price": "$2000 per person",
-                "image": "nile_serenity.jpg",
-                "rating": 4.8,
-                "people": "Cultural enthusiasts",
-                "details": "Experience the wonders of ancient Egypt on this luxurious Nile River cruise.",
-                "basic_information": {
-                    "departure_port": "Luxor, Egypt",
-                    "duration": "12 days",
-                    "wifi": true,
-                    "historical_guides": true
-                },
-                "gallery_images": [
-                    "nile_serenity_1.jpg",
-                    "nile_serenity_2.jpg",
-                    "nile_serenity_3.jpg"
-                ]
-            }
+        "id": 5,
+        "category": "Adventure",
+        "location": "Paris",
+        "name": "Parisian Biking Expedition",
+        "details": "Embark on an adventurous biking expedition through the charming streets of Paris. Explore hidden alleys, cruise along the Seine, and discover the city's vibrant neighborhoods on two wheels.",
+        "price": 549.99,
+        "image": "./paris5.jpg",
+        "gallery": [
+            "paris_biking_1.jpg",
+            "paris_biking_2.jpg",
+            "paris_biking_3.jpg"
+        ],
+        "duration": "1.5 days",
+        "includesMeals": true,
+        "difficultyLevel": "Intermediate",
+        "meetingPoint": "City Bikes Rental Hub",
+        "departureTime": "9:30 AM",
+        "returnTime": "3:30 PM",
+        "highlights": [
+            "Bike through historic Parisian streets",
+            "Scenic ride along the Seine River",
+            "Knowledgeable biking guides",
+            "Enjoy a gourmet picnic in a Parisian park"
+        ],
+        "recommendedGear": [
+            "City bikes provided",
+            "Comfortable biking attire",
+            "Helmet",
+            "Exploration spirit!"
+        ]
+    },
+    {
+        "id": 6,
+        "category": "Adventure",
+        "location": "Tokyo",
+        "name": "Tokyo Urban Cycling Experience",
+        "details": "Embark on an adventurous cycling expedition through Tokyo's vibrant urban landscape. Explore hidden neighborhoods, cruise along the Sumida River, and discover the city's modern and traditional contrasts on two wheels.",
+        "price": 579.99,
+        "image": "./tokyo1.jpg",
+        "gallery": [
+            "tokyo_urban_cycling_1.jpg",
+            "tokyo_urban_cycling_2.jpg",
+            "tokyo_urban_cycling_3.jpg"
+        ],
+        "duration": "1.5 days",
+        "includesMeals": true,
+        "difficultyLevel": "Intermediate",
+        "meetingPoint": "Tokyo Bikes Rental Hub",
+        "departureTime": "10:00 AM",
+        "returnTime": "4:30 PM",
+        "highlights": [
+            "Cycle through modern and traditional Tokyo",
+            "Scenic ride along the Sumida River",
+            "Knowledgeable biking guides",
+            "Enjoy a traditional tea ceremony pitstop"
+        ],
+        "recommendedGear": [
+            "City bikes provided",
+            "Comfortable biking attire",
+            "Helmet",
+            "Exploration spirit!"
+        ]
+    },
+    {
+        "id": 7,
+        "category": "Cultural",
+        "location": "Tokyo",
+        "name": "Traditional Kimono Experience",
+        "details": "Immerse yourself in Tokyo's rich cultural heritage with a traditional kimono experience. Explore historic districts, visit shrines and temples, and discover the art of wearing a kimono with the guidance of experts.",
+        "price": 699.99,
+        "image": "./tokyo2.jpg",
+        "gallery": [
+            "tokyo_kimono_experience_1.jpg",
+            "tokyo_kimono_experience_2.jpg",
+            "tokyo_kimono_experience_3.jpg"
+        ],
+        "duration": "2 days",
+        "includesMeals": true,
+        "culturalGuides": [
+            "Kimono experts"
+        ],
+        "meetingPoint": "Traditional Kimono Studio",
+        "departureTime": "9:30 AM",
+        "returnTime": "6:00 PM",
+        "highlights": [
+            "Experience the art of wearing a traditional kimono",
+            "Explore historic districts in authentic attire",
+            "Visit renowned shrines and temples",
+            "Capture memorable photos in traditional settings"
+        ],
+        "recommendedGear": [
+            "Comfortable undergarments",
+            "Lightweight footwear",
+            "Personal accessories for personalization",
+            "Camera for capturing the cultural experience"
+        ]
+    },
+    {
+        "id": 8,
+        "category": "Gastronomy",
+        "location": "Tokyo",
+        "name": "Sushi Making Workshop",
+        "details": "Delve into the art of sushi making with a hands-on workshop in Tokyo. Learn the intricacies of crafting sushi, from selecting fresh ingredients to perfecting the art of rolling. A culinary adventure for sushi enthusiasts.",
+        "price": 499.99,
+        "image": "./tokyo3.jpg",
+        "gallery": [
+            "tokyo_sushi_workshop_1.jpg",
+            "tokyo_sushi_workshop_2.jpg",
+            "tokyo_sushi_workshop_3.jpg"
+        ],
+        "duration": "1 day",
+        "includesMeals": true,
+        "culinaryGuides": [
+            "Sushi chefs"
+        ],
+        "meetingPoint": "Sushi Culinary Studio",
+        "departureTime": "11:00 AM",
+        "returnTime": "3:00 PM",
+        "highlights": [
+            "Hands-on experience in sushi crafting",
+            "Learn from professional sushi chefs",
+            "Select and prepare fresh ingredients",
+            "Savor your creations in a sushi feast"
+        ],
+        "recommendedGear": [
+            "Apron and chef's hat provided",
+            "Closed-toe shoes",
+            "Appetite for sushi",
+            "Excitement to learn and indulge"
+        ]
+    },
+    {
+        "id": 9,
+        "category": "Nature and Tranquility",
+        "location": "Tokyo",
+        "name": "Shinjuku Gyoen Gardens Retreat",
+        "details": "Escape the bustling city and find tranquility in Shinjuku Gyoen Gardens. Enjoy a peaceful retreat surrounded by beautiful landscapes, serene ponds, and a harmonious blend of traditional Japanese and Western garden styles.",
+        "price": 549.99,
+        "image": "./tokyo4.jpg",
+        "gallery": [
+            "tokyo_gyoen_retreat_1.jpg",
+            "tokyo_gyoen_retreat_2.jpg",
+            "tokyo_gyoen_retreat_3.jpg"
+        ],
+        "duration": "1 day",
+        "includesMeals": false,
+        "natureGuides": [
+            "Garden experts"
+        ],
+        "meetingPoint": "Shinjuku Gyoen Entrance",
+        "departureTime": "9:00 AM",
+        "returnTime": "4:00 PM",
+        "highlights": [
+            "Escape the city to a serene garden oasis",
+            "Stroll through beautiful landscapes",
+            "Discover Japanese and Western garden styles",
+            "Relax and rejuvenate in a peaceful environment"
+        ],
+        "recommendedGear": [
+            "Comfortable walking shoes",
+            "Light jacket or sun protection",
+            "Camera for capturing scenic moments",
+            "Notebook for personal reflections"
+        ]
+    },
+    {
+        "id": 10,
+        "category": "Arts and Entertainment",
+        "location": "Tokyo",
+        "name": "Kawaii Culture Experience",
+        "details": "Dive into Tokyo's kawaii (cute) culture with a hands-on experience. Create your own kawaii accessories, explore quirky districts, and embrace the colorful and adorable side of Japanese pop culture.",
+        "price": 649.99,
+        "image": "./tokyo5.jpg",
+        "gallery": [
+            "tokyo_kawaii_experience_1.jpg",
+            "tokyo_kawaii_experience_2.jpg",
+            "tokyo_kawaii_experience_3.jpg"
+        ],
+        "duration": "1.5 days",
+        "includesMeals": true,
+        "cultureGuides": [
+            "Kawaii experts"
+        ],
+        "meetingPoint": "Kawaii Creation Studio",
+        "departureTime": "10:30 AM",
+        "returnTime": "5:30 PM",
+        "highlights": [
+            "Create adorable kawaii accessories",
+            "Explore districts known for kawaii culture",
+            "Embrace the colorful and cute side of Tokyo",
+            "Take home personalized kawaii souvenirs"
+        ],
+        "recommendedGear": [
+            "Creative spirit",
+            "Comfortable attire for crafting",
+            "Camera for documenting kawaii creations",
+            "Excitement for all things cute and colorful"
+        ]
+    },
+    {
+        "id": 11,
+        "category": "Cityscape",
+        "location": "New York",
+        "name": "Manhattan Skyline Helicopter Tour",
+        "details": "Soar above the iconic Manhattan skyline with a thrilling helicopter tour. Enjoy breathtaking aerial views of landmarks like the Statue of Liberty, Central Park, and the Empire State Building.",
+        "price": 1199.99,
+        "image": "./new_york1.jpg",
+        "gallery": [
+            "nyc_helicopter_tour_1.jpg",
+            "nyc_helicopter_tour_2.jpg",
+            "nyc_helicopter_tour_3.jpg"
+        ],
+        "duration": "1 hour",
+        "includesMeals": false,
+        "observationTimes": [
+            "Morning",
+            "Afternoon"
+        ],
+        "meetingPoint": "Downtown Heliport",
+        "departureTime": "10:00 AM",
+        "returnTime": "11:00 AM",
+        "highlights": [
+            "Aerial views of iconic Manhattan landmarks",
+            "Thrilling helicopter adventure",
+            "Professional and knowledgeable pilot",
+            "Capture stunning photos from above"
+        ],
+        "recommendedGear": [
+            "Comfortable clothing for helicopter ride",
+            "Camera or smartphone for photos",
+            "Photo ID for security check",
+            "Excitement for a memorable experience"
+        ]
+    },
+    {
+        "id": 12,
+        "category": "Arts and Entertainment",
+        "location": "New York",
+        "name": "Art Gallery Crawl",
+        "details": "Immerse yourself in the vibrant art scene of New York with a curated gallery crawl. Explore contemporary and classical art, meet artists, and gain insights into the city's dynamic art culture.",
+        "price": 899.99,
+        "image": "./new_york2.jpg",
+        "gallery": [
+            "nyc_gallery_crawl_1.jpg",
+            "nyc_gallery_crawl_2.jpg",
+            "nyc_gallery_crawl_3.jpg"
+        ],
+        "duration": "1.5 days",
+        "includesMeals": true,
+        "observationTimes": [
+            "Evening"
+        ],
+        "meetingPoint": "Chelsea Art District",
+        "departureTime": "5:00 PM",
+        "returnTime": "8:30 PM",
+        "highlights": [
+            "Curated tour of renowned art galleries",
+            "Meet and greet with local artists",
+            "Insights into New York's dynamic art culture",
+            "Evening exploration of the Chelsea Art District"
+        ],
+        "recommendedGear": [
+            "Smart-casual attire for gallery visits",
+            "Comfortable walking shoes",
+            "Notebook for art observations",
+            "Open mind for diverse art experiences"
+        ]
+    },
+    {
+        "id": 13,
+        "category": "Culinary",
+        "location": "New York",
+        "name": "Food Truck Fiesta",
+        "details": "Embark on a culinary adventure through New York's diverse food truck scene. Sample a variety of street food delicacies, from gourmet sandwiches to international flavors, and experience the city's foodie culture.",
+        "price": 699.99,
+        "image": "./new_york3.jpg",
+        "gallery": [
+            "nyc_food_truck_fiesta_1.jpg",
+            "nyc_food_truck_fiesta_2.jpg",
+            "nyc_food_truck_fiesta_3.jpg"
+        ],
+        "duration": "1 day",
+        "includesMeals": true,
+        "observationTimes": [
+            "Lunch"
+        ],
+        "meetingPoint": "Food Truck Hub",
+        "departureTime": "12:00 PM",
+        "returnTime": "3:00 PM",
+        "highlights": [
+            "Explore New York's diverse food truck scene",
+            "Sample gourmet sandwiches and international flavors",
+            "Immerse in the city's vibrant foodie culture",
+            "Lunchtime culinary adventure"
+        ],
+        "recommendedGear": [
+            "Casual attire for outdoor food exploration",
+            "Water bottle for staying hydrated",
+            "Appetite for diverse street food",
+            "Camera for documenting culinary delights"
+        ]
+    },
+    {
+        "id": 14,
+        "category": "Historical",
+        "location": "New York",
+        "name": "Revolutionary War Reenactment",
+        "details": "Step back in time with a historical reenactment of key Revolutionary War events. Witness battle reenactments, explore military encampments, and gain a firsthand experience of the nation's history.",
+        "price": 849.99,
+        "image": "./new_york4.jpg",
+        "gallery": [
+            "nyc_revolutionary_reenactment_1.jpg",
+            "nyc_revolutionary_reenactment_2.jpg",
+            "nyc_revolutionary_reenactment_3.jpg"
+        ],
+        "duration": "2 days",
+        "includesMeals": true,
+        "observationTimes": [
+            "Daytime"
+        ],
+        "meetingPoint": "Historic Battlefield",
+        "departureTime": "9:30 AM",
+        "returnTime": "5:00 PM",
+        "highlights": [
+            "Live reenactment of Revolutionary War events",
+            "Explore military encampments and exhibits",
+            "Interactive history sessions",
+            "Immerse in the nation's founding era"
+        ],
+        "recommendedGear": [
+            "Comfortable historical attire if desired",
+            "Sunscreen and hat for daytime events",
+            "Camera for capturing historical moments",
+            "Curiosity about Revolutionary War history"
+        ]
+    },
+    {
+        "id": 15,
+        "category": "Cityscape",
+        "location": "New York",
+        "name": "Sunset Cruise on the Hudson",
+        "details": "Experience the magic of a New York sunset with a cruise on the Hudson River. Enjoy panoramic views of the city skyline, iconic landmarks, and the Statue of Liberty as the sun sets over the Manhattan skyline.",
+        "price": 999.99,
+        "image": "./new_york5.jpg",
+        "gallery": [
+            "nyc_sunset_cruise_1.jpg",
+            "nyc_sunset_cruise_2.jpg",
+            "nyc_sunset_cruise_3.jpg"
+        ],
+        "duration": "2 hours",
+        "includesMeals": true,
+        "observationTimes": [
+            "Evening"
+        ],
+        "meetingPoint": "Hudson River Pier",
+        "departureTime": "6:30 PM",
+        "returnTime": "8:30 PM",
+        "highlights": [
+            "Magical sunset views over the Manhattan skyline",
+            "Cruise along the Hudson River",
+            "Panoramic vistas of iconic landmarks",
+            "Evening relaxation on the water"
+        ],
+        "recommendedGear": [
+            "Sweater or light jacket for evening breeze",
+            "Camera for capturing sunset moments",
+            "Appetite for a delightful onboard dinner",
+            "Enjoyment of a serene Hudson River cruise"
         ]
     }
 ]

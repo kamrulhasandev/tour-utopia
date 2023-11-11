@@ -1,4 +1,20 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 const SearchField = () => {
+  const [formData, setFormData] = useState({
+    destination: "",
+    activity: "",
+    date: "",
+    guests: 1,
+  });
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="">
       <div className="max-w-screen-xl mx-auto px-5">
@@ -10,14 +26,16 @@ const SearchField = () => {
                 Destination
               </label>
               <select
+                value={formData.destination}
+                onChange={handleInputChange}
                 id="destination"
                 name="destination"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               >
                 <option value="">Select Destination</option>
-                <option value="paris">Paris</option>
-                <option value="tokyo">Tokyo</option>
-                <option value="new-york">New York</option>
+                <option value="Paris">Paris</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="New York">New York</option>
               </select>
             </div>
 
@@ -28,6 +46,8 @@ const SearchField = () => {
               </label>
               <input
                 type="text"
+                value={formData.activity}
+                onChange={handleInputChange}
                 id="activity"
                 name="activity"
                 placeholder="e.g., Adventure, Relaxation"
@@ -42,6 +62,8 @@ const SearchField = () => {
               </label>
               <input
                 type="date"
+                value={formData.date}
+                onChange={handleInputChange}
                 id="date"
                 name="date"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
@@ -56,6 +78,8 @@ const SearchField = () => {
               <input
                 type="number"
                 id="guests"
+                value={formData.guests}
+                onChange={handleInputChange}
                 name="guests"
                 min="1"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
@@ -64,12 +88,14 @@ const SearchField = () => {
 
             {/* Search Button */}
             <div className="mt-8">
-              <button
-                type="submit"
-                className="w-full bg-[#FF5522] text-white px-6 py-2 rounded-md hover:bg-[#ec7551] focus:outline-none"
-              >
-                Search
-              </button>
+              <Link to={`/${formData.destination}`}>
+                <button
+                  type="button"
+                  className="w-full bg-[#FF5522] text-white px-6 py-2 rounded-md hover:bg-[#ec7551] focus:outline-none"
+                >
+                  Search
+                </button>
+              </Link>
             </div>
           </form>
         </div>

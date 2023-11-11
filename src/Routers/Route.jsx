@@ -6,6 +6,7 @@ import SignIn from "../Pages/SIgnIn/SignIn";
 import Destination from "../Pages/Destination/Destination";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
+import SearchResult from "../Pages/SearchResult/SearchResult";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/:id",
+        element: <SearchResult />,
       },
     ],
   },
