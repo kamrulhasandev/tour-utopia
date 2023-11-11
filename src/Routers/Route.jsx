@@ -7,6 +7,7 @@ import Destination from "../Pages/Destination/Destination";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import SearchResult from "../Pages/SearchResult/SearchResult";
+import PackageDetails from "../Pages/PackageDetails/PackageDetails";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/:id",
         element: <SearchResult />,
+      },
+      {
+        path: "/package/:id",
+        element: <PackageDetails />,
       },
     ],
   },

@@ -6,11 +6,12 @@
         "name": "Paris Adventure Tour",
         "details": "Experience the thrill of adventure in the heart of Paris. Explore hidden gems, climb iconic landmarks, and enjoy breathtaking views.",
         "price": 599.99,
-        "image": "./paris1.jpg",
+        "image": "/paris1.jpg",
         "gallery": [
-            "paris_adventure_1.jpg",
-            "paris_adventure_2.jpg",
-            "paris_adventure_3.jpg"
+            "/paris2.jpg",
+            "/paris3.jpg",
+            "/paris4.jpg",
+            "/paris5.jpg"
         ],
         "duration": "2 days",
         "includesMeals": true,
@@ -38,11 +39,12 @@
         "name": "Seine Kayaking Expedition",
         "details": "Embark on a thrilling kayaking adventure along the Seine River. Explore the city from a unique perspective, paddle past iconic landmarks, and enjoy the excitement of urban water exploration.",
         "price": 649.99,
-        "image": "./paris2.jpg",
+        "image": "/paris2.jpg",
         "gallery": [
-            "paris_kayaking_1.jpg",
-            "paris_kayaking_2.jpg",
-            "paris_kayaking_3.jpg"
+            "/paris1.jpg",
+            "/paris3.jpg",
+            "/paris4.jpg",
+            "/paris5.jpg"
         ],
         "duration": "1.5 days",
         "includesMeals": true,
@@ -70,11 +72,12 @@
         "name": "Rooftop Ziplining Adventure",
         "details": "Soar above the Parisian skyline on a thrilling rooftop ziplining adventure. Experience an adrenaline rush as you glide between iconic buildings, enjoying breathtaking views of the city below.",
         "price": 799.99,
-        "image": "./paris3.jpg",
+        "image": "/paris3.jpg",
         "gallery": [
-            "paris_ziplining_1.jpg",
-            "paris_ziplining_2.jpg",
-            "paris_ziplining_3.jpg"
+            "/paris1.jpg",
+            "/paris2.jpg",
+            "/paris4.jpg",
+            "/paris5.jpg"
         ],
         "duration": "1 day",
         "includesMeals": true,
@@ -102,11 +105,12 @@
         "name": "Urban Rock Climbing Challenge",
         "details": "Conquer the urban landscape with a rock climbing challenge in the heart of Paris. Scale iconic structures, test your climbing skills, and enjoy breathtaking views of the city from new heights.",
         "price": 699.99,
-        "image": "./paris4.jpg",
+        "image": "/paris4.jpg",
         "gallery": [
-            "paris_rock_climbing_1.jpg",
-            "paris_rock_climbing_2.jpg",
-            "paris_rock_climbing_3.jpg"
+            "/paris1.jpg",
+            "/paris3.jpg",
+            "/paris5.jpg",
+            "/paris2.jpg"
         ],
         "duration": "2 days",
         "includesMeals": true,
@@ -134,11 +138,12 @@
         "name": "Parisian Biking Expedition",
         "details": "Embark on an adventurous biking expedition through the charming streets of Paris. Explore hidden alleys, cruise along the Seine, and discover the city's vibrant neighborhoods on two wheels.",
         "price": 549.99,
-        "image": "./paris5.jpg",
+        "image": "/paris5.jpg",
         "gallery": [
-            "paris_biking_1.jpg",
-            "paris_biking_2.jpg",
-            "paris_biking_3.jpg"
+            "/paris1.jpg",
+            "/paris3.jpg",
+            "/paris4.jpg",
+            "/paris2.jpg"
         ],
         "duration": "1.5 days",
         "includesMeals": true,
@@ -166,11 +171,12 @@
         "name": "Tokyo Urban Cycling Experience",
         "details": "Embark on an adventurous cycling expedition through Tokyo's vibrant urban landscape. Explore hidden neighborhoods, cruise along the Sumida River, and discover the city's modern and traditional contrasts on two wheels.",
         "price": 579.99,
-        "image": "./tokyo1.jpg",
+        "image": "/tokyo1.jpg",
         "gallery": [
-            "tokyo_urban_cycling_1.jpg",
-            "tokyo_urban_cycling_2.jpg",
-            "tokyo_urban_cycling_3.jpg"
+            "/tokyo2.jpg",
+            "/tokyo3.jpg",
+            "/tokyo4.jpg",
+            "/tokyo5.jpg"
         ],
         "duration": "1.5 days",
         "includesMeals": true,
@@ -198,11 +204,12 @@
         "name": "Traditional Kimono Experience",
         "details": "Immerse yourself in Tokyo's rich cultural heritage with a traditional kimono experience. Explore historic districts, visit shrines and temples, and discover the art of wearing a kimono with the guidance of experts.",
         "price": 699.99,
-        "image": "./tokyo2.jpg",
+        "image": "/tokyo2.jpg",
         "gallery": [
-            "tokyo_kimono_experience_1.jpg",
-            "tokyo_kimono_experience_2.jpg",
-            "tokyo_kimono_experience_3.jpg"
+            "/tokyo3.jpg",
+            "/tokyo4.jpg",
+            "/tokyo5.jpg",
+            "/tokyo1.jpg"
         ],
         "duration": "2 days",
         "includesMeals": true,
@@ -232,11 +239,12 @@
         "name": "Sushi Making Workshop",
         "details": "Delve into the art of sushi making with a hands-on workshop in Tokyo. Learn the intricacies of crafting sushi, from selecting fresh ingredients to perfecting the art of rolling. A culinary adventure for sushi enthusiasts.",
         "price": 499.99,
-        "image": "./tokyo3.jpg",
+        "image": "/tokyo3.jpg",
         "gallery": [
-            "tokyo_sushi_workshop_1.jpg",
-            "tokyo_sushi_workshop_2.jpg",
-            "tokyo_sushi_workshop_3.jpg"
+            "/tokyo4.jpg",
+            "/tokyo5.jpg",
+            "/tokyo1.jpg",
+            "/tokyo2.jpg"
         ],
         "duration": "1 day",
         "includesMeals": true,
@@ -266,11 +274,12 @@
         "name": "Shinjuku Gyoen Gardens Retreat",
         "details": "Escape the bustling city and find tranquility in Shinjuku Gyoen Gardens. Enjoy a peaceful retreat surrounded by beautiful landscapes, serene ponds, and a harmonious blend of traditional Japanese and Western garden styles.",
         "price": 549.99,
-        "image": "./tokyo4.jpg",
+        "image": "/tokyo4.jpg",
         "gallery": [
-            "tokyo_gyoen_retreat_1.jpg",
-            "tokyo_gyoen_retreat_2.jpg",
-            "tokyo_gyoen_retreat_3.jpg"
+            "/tokyo5.jpg",
+            "/tokyo3.jpg",
+            "/tokyo2.jpg",
+            "/tokyo1.jpg"
         ],
         "duration": "1 day",
         "includesMeals": false,
@@ -300,11 +309,12 @@
         "name": "Kawaii Culture Experience",
         "details": "Dive into Tokyo's kawaii (cute) culture with a hands-on experience. Create your own kawaii accessories, explore quirky districts, and embrace the colorful and adorable side of Japanese pop culture.",
         "price": 649.99,
-        "image": "./tokyo5.jpg",
+        "image": "/tokyo5.jpg",
         "gallery": [
-            "tokyo_kawaii_experience_1.jpg",
-            "tokyo_kawaii_experience_2.jpg",
-            "tokyo_kawaii_experience_3.jpg"
+            "/tokyo1.jpg",
+            "/tokyo2.jpg",
+            "/tokyo3.jpg",
+            "/tokyo4.jpg"
         ],
         "duration": "1.5 days",
         "includesMeals": true,
@@ -334,11 +344,12 @@
         "name": "Manhattan Skyline Helicopter Tour",
         "details": "Soar above the iconic Manhattan skyline with a thrilling helicopter tour. Enjoy breathtaking aerial views of landmarks like the Statue of Liberty, Central Park, and the Empire State Building.",
         "price": 1199.99,
-        "image": "./new_york1.jpg",
+        "image": "/new_york1.jpg",
         "gallery": [
-            "nyc_helicopter_tour_1.jpg",
-            "nyc_helicopter_tour_2.jpg",
-            "nyc_helicopter_tour_3.jpg"
+            "/new_york1.jpg",
+            "/new_york2.jpg",
+            "/new_york3.jpg",
+            "/new_york4.jpg"
         ],
         "duration": "1 hour",
         "includesMeals": false,
@@ -369,11 +380,12 @@
         "name": "Art Gallery Crawl",
         "details": "Immerse yourself in the vibrant art scene of New York with a curated gallery crawl. Explore contemporary and classical art, meet artists, and gain insights into the city's dynamic art culture.",
         "price": 899.99,
-        "image": "./new_york2.jpg",
+        "image": "/new_york2.jpg",
         "gallery": [
-            "nyc_gallery_crawl_1.jpg",
-            "nyc_gallery_crawl_2.jpg",
-            "nyc_gallery_crawl_3.jpg"
+            "/new_york3.jpg",
+            "/new_york4.jpg",
+            "/new_york5.jpg",
+            "/new_york1.jpg"
         ],
         "duration": "1.5 days",
         "includesMeals": true,
@@ -403,11 +415,12 @@
         "name": "Food Truck Fiesta",
         "details": "Embark on a culinary adventure through New York's diverse food truck scene. Sample a variety of street food delicacies, from gourmet sandwiches to international flavors, and experience the city's foodie culture.",
         "price": 699.99,
-        "image": "./new_york3.jpg",
+        "image": "/new_york3.jpg",
         "gallery": [
-            "nyc_food_truck_fiesta_1.jpg",
-            "nyc_food_truck_fiesta_2.jpg",
-            "nyc_food_truck_fiesta_3.jpg"
+            "/new_york4.jpg",
+            "/new_york5.jpg",
+            "/new_york2.jpg",
+            "/new_york1.jpg"
         ],
         "duration": "1 day",
         "includesMeals": true,
@@ -437,11 +450,12 @@
         "name": "Revolutionary War Reenactment",
         "details": "Step back in time with a historical reenactment of key Revolutionary War events. Witness battle reenactments, explore military encampments, and gain a firsthand experience of the nation's history.",
         "price": 849.99,
-        "image": "./new_york4.jpg",
+        "image": "/new_york4.jpg",
         "gallery": [
-            "nyc_revolutionary_reenactment_1.jpg",
-            "nyc_revolutionary_reenactment_2.jpg",
-            "nyc_revolutionary_reenactment_3.jpg"
+            "/new_york5.jpg",
+            "/new_york1.jpg",
+            "/new_york2.jpg",
+            "/new_york3.jpg"
         ],
         "duration": "2 days",
         "includesMeals": true,
@@ -471,11 +485,12 @@
         "name": "Sunset Cruise on the Hudson",
         "details": "Experience the magic of a New York sunset with a cruise on the Hudson River. Enjoy panoramic views of the city skyline, iconic landmarks, and the Statue of Liberty as the sun sets over the Manhattan skyline.",
         "price": 999.99,
-        "image": "./new_york5.jpg",
+        "image": "/new_york5.jpg",
         "gallery": [
-            "nyc_sunset_cruise_1.jpg",
-            "nyc_sunset_cruise_2.jpg",
-            "nyc_sunset_cruise_3.jpg"
+            "/new_york1.jpg",
+            "/new_york2.jpg",
+            "/new_york3.jpg",
+            "/new_york4.jpg"
         ],
         "duration": "2 hours",
         "includesMeals": true,

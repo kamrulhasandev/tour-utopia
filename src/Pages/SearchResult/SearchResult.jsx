@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaClock,FaStar } from "react-icons/fa";
 import './SearchResult.css'
 
@@ -29,6 +29,7 @@ const SearchResult = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
           {matchingResults.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-2xl">
+              <Link to={`/package/${item.id}`}>
               <div className="image-container rounded-t-2xl">
                 <img className="rounded-t-2xl" src={item.image} alt="" />
                 <div className="overlay"></div>
@@ -48,6 +49,7 @@ const SearchResult = () => {
                   <p className="text-[#6C7171]">Start From: <span className="text-[#FF5522] font-bold">${item.price}</span></p>
                 </div>
               </div>
+              </Link>
             </div>
           ))}
         </div>
