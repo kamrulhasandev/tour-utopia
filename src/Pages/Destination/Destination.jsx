@@ -18,7 +18,15 @@ const Destination = () => {
     fetchData();
   }, []);
   return (
-    <div className="py-20">
+    <div className="">
+      <div
+        style={{
+          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url('./banner1.jpg')`,
+        }}
+        className="w-full bg-center bg-cover h-64 flex justify-center items-center pt-[64px]" // Adjust the height as needed
+      >
+        <h3 className="text-white text-3xl md:text-5xl font-bold">Destinations</h3>
+      </div>
       <div className="max-w-screen-xl mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
           {data.map((item, index) => (
