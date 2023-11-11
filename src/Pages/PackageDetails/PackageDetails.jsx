@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { FaClock, FaStar, FaLongArrowAltRight } from "react-icons/fa";
 
 const PackageDetails = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +23,8 @@ const PackageDetails = () => {
   }, []);
 
   const matchingResults = data.find((item) => item.id == id);
+  const popularTour = data.filter((item) => item.location === matchingResults?.location)
+  console.log(popularTour);
 
   return (
     <div className="">
@@ -35,17 +40,171 @@ const PackageDetails = () => {
         <hp className="text-white text-2xl">{matchingResults?.name}</hp>
       </div>
       <div className="max-w-screen-xl mx-auto px-5 py-10">
-        <div className="md:w-3/5">
-          <div>
-            <img src={matchingResults?.image} alt="" />
-            <div className="flex justify-between py-5 overflow-x-auto md:overflow-x-hidden gap-1">
-            {matchingResults?.gallery?.map((item, index) => (
-              <img key={index} src={item} className="w-36"/>
-            ))}
+        <div className=" md:flex justify-between gap-10">
+          <div className="md:w-3/5">
+            <div>
+              <img src={matchingResults?.image} alt="" />
+              <div className="flex justify-between py-5 overflow-x-auto md:overflow-x-hidden gap-1">
+                {matchingResults?.gallery?.map((item, index) => (
+                  <img key={index} src={item} className="w-36" />
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="flex gap-10 items-center">
+                <p className="text-[#FF5522] text-2xl font-bold">
+                  {matchingResults?.location}
+                </p>
+                <p className="flex items-center gap-1">
+                  <FaStar className="text-yellow-400" />
+                  4.9
+                </p>
+                <p className="text-[#6C7171]">{matchingResults?.category}</p>
+              </div>
+              <h1 className="text-5xl font-bold text-[#6C7171]">
+                {matchingResults?.name}
+              </h1>
+              <div>
+                <p className="flex items-center gap-1 uppercase">
+                  <FaClock className="text-[#FF5522]" />{" "}
+                  {matchingResults?.duration}
+                </p>
+              </div>
+              <div>
+                <h6 className="text-2xl font-bold text-[#6C7171]">
+                  Tour Details
+                </h6>
+                <p className="text-lg text-[#6C7171]">
+                  {matchingResults?.details}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="md:w-2/5">
+            <div className="shadow-2xl">
+              <div className="flex items-center gap-3 bg-[#FF5522] text-white p-5">
+                <small>
+                  Start
+                  <br />
+                  From
+                </small>
+                <h4 className="text-4xl font-bold">
+                  ${matchingResults?.price}{" "}
+                  <span className="text-base"> / Per Person</span>
+                </h4>
+              </div>
+              <div className="p-5 flex flex-col gap-5">
+                <div className="flex items-center gap-3">
+                  <label
+                    className="w-2/5 font-bold text-[#6C7171]"
+                    htmlFor="name"
+                  >
+                    Full Name:{" "}
+                  </label>
+                  <input
+                    className="w-[100%] border-2 p-2 rounded-md"
+                    type="text"
+                    name=""
+                    value={user?.displayName}
+                    id=""
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <label
+                    className="w-2/5 font-bold text-[#6C7171]"
+                    htmlFor="name"
+                  >
+                    Email :{" "}
+                  </label>
+                  <input
+                    className="w-[100%] border-2 p-2 rounded-md"
+                    type="text"
+                    name=""
+                    value={user?.email}
+                    id=""
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <label
+                    className="w-2/5 font-bold text-[#6C7171]"
+                    htmlFor="name"
+                  >
+                    Mobile :{" "}
+                  </label>
+                  <input
+                    className="w-[100%] border-2 p-2 rounded-md"
+                    type="text"
+                    name=""
+                    placeholder="Mobile Number"
+                    id=""
+                  />
+                </div>
+              </div>
+              <button className="bg-[#FF5522] font-bold py-3 text-white w-full">
+                Book Now
+              </button>
             </div>
           </div>
         </div>
-        <div className="md:w-2/5"></div>
+        {/* extra details  */}
+        <div className="pt-10">
+          <h5 className="text-[#6C7171] text-xl font-bold">HighLights</h5>
+          <ul className="flex flex-col gap-2 py-2">
+            {matchingResults?.highlights?.map((item, index) => (
+              <li key={index} className="flex items-center gap-3">
+                <FaLongArrowAltRight className="text-[#FF5522]"/>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="pt-10">
+          <h5 className="text-[#6C7171] text-xl font-bold">Recommendation</h5>
+          <ul className="flex flex-col gap-2 py-2">
+            {matchingResults?.recommendedGear?.map((item, index) => (
+              <li key={index} className="flex items-center gap-3">
+                <FaLongArrowAltRight className="text-[#FF5522]"/>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+
+        {/* Popular tour  */}
+
+        <div className="pt-20 pb-5">
+            <h3 className="text-4xl font-bold">Popular Tour in {popularTour[0]?.location}</h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
+          {popularTour.map((item, index) => (
+            <div key={index} className="bg-white shadow-lg rounded-2xl">
+              <Link to={`/package/${item.id}`}>
+              <div className="image-container rounded-t-2xl">
+                <img className="rounded-t-2xl" src={item.image} alt="" />
+                <div className="overlay"></div>
+              </div>
+              <div className="p-5">
+                <div className="flex flex-col gap-3">
+                  <p className="text-[#FF5522] font-bold text-lg">{item.location}</p>
+                  <h6 className="text-xl font-semibold text-[#6C7171]">{item.name}</h6>
+                  <div className="flex justify-between items-center">
+                    <p className="flex  items-center gap-1"><FaClock className="text-[#FF5522]" size={15} /><span className="text-[#6C7171] font-bold uppercase">{item.duration}</span></p>
+                    <p className="text-[#FF5522] font-bold">{item.category}</p>
+                  </div>
+                </div>
+                <hr className="my-3" />
+                <div className="flex justify-between">
+                  <p className="flex items-center gap-1"><FaStar /><span className="text-[#6C7171]">4.9</span></p>
+                  <p className="text-[#6C7171]">Start From: <span className="text-[#FF5522] font-bold">${item.price}</span></p>
+                </div>
+              </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );
