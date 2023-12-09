@@ -9,11 +9,11 @@ import Contact from "../Pages/Contact/Contact";
 import SearchResult from "../Pages/SearchResult/SearchResult";
 import PackageDetails from "../Pages/PackageDetails/PackageDetails";
 import Dashboard from "../Layout/Dashboard";
-import Users from "../Components/Dashboard/Users";
-import Packages from "../Components/Dashboard/Packages";
-import News from "../Components/Dashboard/News";
-import Blogs from "../Components/Dashboard/Blogs";
-import Booked from "../Components/Dashboard/Booked";
+import Users from "../Components/Dashboard/Users/Users";
+import News from "../Components/Dashboard/News/News";
+import Blogs from "../Components/Dashboard/Blogs/Blogs";
+import Booked from "../Components/Dashboard/Booked/Booked";
+import Packages from "../Components/Dashboard/Packages/Packages";
 
 const router = createBrowserRouter([
   {
