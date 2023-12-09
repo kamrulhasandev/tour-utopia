@@ -9,6 +9,11 @@ import Contact from "../Pages/Contact/Contact";
 import SearchResult from "../Pages/SearchResult/SearchResult";
 import PackageDetails from "../Pages/PackageDetails/PackageDetails";
 import Dashboard from "../Layout/Dashboard";
+import Users from "../Components/Dashboard/Users";
+import Packages from "../Components/Dashboard/Packages";
+import News from "../Components/Dashboard/News";
+import Blogs from "../Components/Dashboard/Blogs";
+import Booked from "../Components/Dashboard/Booked";
 
 const router = createBrowserRouter([
   {
@@ -50,9 +55,31 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/dashboard',
-    element: <Dashboard/>
-  }
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "/dashboard/users",
+        element: <Users />,
+      },
+      {
+        path: "/dashboard/packages",
+        element: <Packages />,
+      },
+      {
+        path: "/dashboard/news",
+        element: <News />,
+      },
+      {
+        path: "/dashboard/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/dashboard/booked",
+        element: <Booked />,
+      },
+    ],
+  },
 ]);
 
 export default router;
