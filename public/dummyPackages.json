@@ -1,0 +1,152 @@
+ [
+      {
+        "id": "1",
+        "name": "Mountain Retreat",
+        "price": 1200,
+        "location": "Mountain Valley",
+        "division": "Nature",
+        "coverImage": "mountain_retreat_cover.jpg",
+        "description": "Escape to the serene mountain valley for a relaxing retreat.",
+        "duration": "4 days",
+        "galleryImages": [
+          "mountain_retreat_image1.jpg",
+          "mountain_retreat_image2.jpg",
+          "mountain_retreat_image3.jpg"
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Coastal Adventure",
+        "price": 1500,
+        "location": "Tropical Coast",
+        "division": "Adventure",
+        "coverImage": "coastal_adventure_cover.jpg",
+        "description": "Embark on an adventurous journey along the tropical coast.",
+        "duration": "5 days",
+        "galleryImages": [
+          "coastal_adventure_image1.jpg",
+          "coastal_adventure_image2.jpg",
+          "coastal_adventure_image3.jpg"
+        ]
+      },
+      {
+        "id": "3",
+        "name": "City Explorer",
+        "price": 1000,
+        "location": "Urban Metropolis",
+        "division": "City",
+        "coverImage": "city_explorer_cover.jpg",
+        "description": "Discover the vibrant culture and attractions of the urban metropolis.",
+        "duration": "3 days",
+        "galleryImages": [
+          "city_explorer_image1.jpg",
+          "city_explorer_image2.jpg",
+          "city_explorer_image3.jpg"
+        ]
+      },
+      {
+        "id": "4",
+        "name": "Desert Safari",
+        "price": 1800,
+        "location": "Sahara Desert",
+        "division": "Adventure",
+        "coverImage": "desert_safari_cover.jpg",
+        "description": "Experience the thrill of a desert safari in the Sahara.",
+        "duration": "6 days",
+        "galleryImages": [
+          "desert_safari_image1.jpg",
+          "desert_safari_image2.jpg",
+          "desert_safari_image3.jpg"
+        ]
+      },
+      {
+        "id": "5",
+        "name": "Island Paradise",
+        "price": 2000,
+        "location": "Tropical Island",
+        "division": "Nature",
+        "coverImage": "island_paradise_cover.jpg",
+        "description": "Indulge in luxury on a beautiful tropical island.",
+        "duration": "7 days",
+        "galleryImages": [
+          "island_paradise_image1.jpg",
+          "island_paradise_image2.jpg",
+          "island_paradise_image3.jpg"
+        ]
+      },
+      {
+        "id": "6",
+        "name": "Historical Tour",
+        "price": 1300,
+        "location": "Ancient Ruins",
+        "division": "History",
+        "coverImage": "historical_tour_cover.jpg",
+        "description": "Explore the rich history of ancient ruins and archaeological sites.",
+        "duration": "5 days",
+        "galleryImages": [
+          "historical_tour_image1.jpg",
+          "historical_tour_image2.jpg",
+          "historical_tour_image3.jpg"
+        ]
+      },
+      {
+        "id": "7",
+        "name": "Wildlife Safari",
+        "price": 1600,
+        "location": "African Savannah",
+        "division": "Adventure",
+        "coverImage": "wildlife_safari_cover.jpg",
+        "description": "Embark on an exciting wildlife safari in the African savannah.",
+        "duration": "8 days",
+        "galleryImages": [
+          "wildlife_safari_image1.jpg",
+          "wildlife_safari_image2.jpg",
+          "wildlife_safari_image3.jpg"
+        ]
+      },
+      {
+        "id": "8",
+        "name": "Snowy Escape",
+        "price": 1700,
+        "location": "Snowy Mountains",
+        "division": "Nature",
+        "coverImage": "snowy_escape_cover.jpg",
+        "description": "Experience the beauty of snowy mountains in a winter escape.",
+        "duration": "6 days",
+        "galleryImages": [
+          "snowy_escape_image1.jpg",
+          "snowy_escape_image2.jpg",
+          "snowy_escape_image3.jpg"
+        ]
+      },
+      {
+        "id": "9",
+        "name": "Cruise Adventure",
+        "price": 2200,
+        "location": "Caribbean Sea",
+        "division": "Adventure",
+        "coverImage": "cruise_adventure_cover.jpg",
+        "description": "Set sail on a thrilling adventure with a luxury cruise.",
+        "duration": "10 days",
+        "galleryImages": [
+          "cruise_adventure_image1.jpg",
+          "cruise_adventure_image2.jpg",
+          "cruise_adventure_image3.jpg"
+        ]
+      },
+      {
+        "id": "10",
+        "name": "Mystical Caves",
+        "price": 1100,
+        "location": "Enchanted Caves",
+        "division": "Nature",
+        "coverImage": "mystical_caves_cover.jpg",
+        "description": "Discover the mysteries of enchanted caves in this unique tour.",
+        "duration": "4 days",
+        "galleryImages": [
+          "mystical_caves_image1.jpg",
+          "mystical_caves_image2.jpg",
+          "mystical_caves_image3.jpg"
+        ]
+      }
+    ]
