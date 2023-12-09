@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import './Packages.css'
+import "./Packages.css";
+import AddPackage from "./addPackage/AddPackage";
 
 const Packages = () => {
   const [packages, setPackages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const itemsPerPage = 5;
 
   useEffect(() => {
@@ -43,18 +46,44 @@ const Packages = () => {
     setCurrentPage(selected);
   };
 
+  const handleAddPackageClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="container mx-auto p-6">
       <div className="mb-4 flex justify-between">
-      <input
+        <input
           type="text"
           placeholder="Search by name, location, or division"
           className="p-2 border rounded-md"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="bg-green-500 py-2 px-2 rounded-lg text-white">Add Package</button>
+        <button
+          className="bg-green-500 py-2 px-2 rounded-lg text-white"
+          onClick={handleAddPackageClick}
+        >
+          Add Package
+        </button>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className=" bg-white">
+            <AddPackage
+              handleAddPackageClick={handleAddPackageClick}
+              handleModalClose={handleModalClose}
+            />
+          </div>
+        </div>
+      )}
+
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border rounded-lg shadow-md text-sm">
           <thead>
@@ -111,6 +140,7 @@ const Packages = () => {
           </tbody>
         </table>
       </div>
+
       <div className="mt-4">
         <ReactPaginate
           previousLabel={"<"}
