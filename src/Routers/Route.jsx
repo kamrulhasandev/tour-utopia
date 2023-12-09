@@ -14,6 +14,7 @@ import News from "../Components/Dashboard/News/News";
 import Blogs from "../Components/Dashboard/Blogs/Blogs";
 import Booked from "../Components/Dashboard/Booked/Booked";
 import Packages from "../Components/Dashboard/Packages/Packages";
+import DashboardHome from "../Components/Dashboard/dashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
+      {
+        path: "/dashboard",
+        element: <DashboardHome />,
+      },
       {
         path: "/dashboard/users",
         element: <Users />,
