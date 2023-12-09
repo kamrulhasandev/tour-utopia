@@ -2,15 +2,13 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
+const AddNews = ({ handleModalClose, handleAddNewsClick }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    price: 0,
-    location: "",
-    division: "",
-    coverImage: "",
+    headline: "",
+    source: "",
+    date: "",
     description: "",
-    duration: "",
+    image: "",
   });
 
   const handleChange = (e) => {
@@ -36,12 +34,12 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
       >
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Name
+            Headline
           </label>
           <input
             type="text"
-            name="name"
-            value={formData.name}
+            name="headline"
+            value={formData.headline}
             onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
@@ -49,12 +47,12 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Price
+            Source
           </label>
           <input
-            type="number"
-            name="price"
-            value={formData.price}
+            type="text"
+            name="source"
+            value={formData.source}
             onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
@@ -62,47 +60,12 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Location
+            Date
           </label>
           <input
             type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            className="p-2 border rounded-md w-full"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Division
-          </label>
-          <select
-            name="division"
-            value={formData.division}
-            onChange={handleChange}
-            className="p-2 border rounded-md w-full"
-          >
-            <option value="">Select Division</option>
-            <option value="Dhaka">Dhaka</option>
-            <option value="Chittagong">Chittagong</option>
-            <option value="Rajshahi">Rajshahi</option>
-            <option value="Khulna">Khulna</option>
-            <option value="Barisal">Barisal</option>
-            <option value="Sylhet">Sylhet</option>
-            <option value="Rangpur">Rangpur</option>
-            <option value="Mymensingh">Mymensingh</option>
-          </select>
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Cover Image
-          </label>
-          <input
-            type="text"
-            name="coverImage"
-            value={formData.coverImage}
+            name="date"
+            value={formData.date}
             onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
@@ -122,12 +85,12 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Duration
+            Image
           </label>
           <input
             type="text"
-            name="duration"
-            value={formData.duration}
+            name="image"
+            value={formData.image}
             onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
@@ -152,4 +115,4 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
   );
 };
 
-export default AddPackage;
+export default AddNews;

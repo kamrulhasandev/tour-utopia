@@ -56,6 +56,7 @@ const Packages = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <h1 className="text-center text-3xl font-bold">Packages Manage</h1>
       <div className="mb-4 flex justify-between">
         <input
           type="text"

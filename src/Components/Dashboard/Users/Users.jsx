@@ -72,6 +72,7 @@ const Users = () => {
   };
   return (
     <div className="container mx-auto p-6">
+      <h1 className="text-center text-3xl font-bold">User Manage</h1>
       <div className="py-5">
         <div className="mb-4 flex justify-between items-center">
           <input
