@@ -8,6 +8,7 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import SearchResult from "../Pages/SearchResult/SearchResult";
 import PackageDetails from "../Pages/PackageDetails/PackageDetails";
+import Dashboard from "../Layout/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard/>
+  }
 ]);
 
 export default router;
