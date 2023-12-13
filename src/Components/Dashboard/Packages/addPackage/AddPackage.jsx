@@ -1,28 +1,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddPackage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    location: "",
+    division: "",
+    coverImage: "",
+    duration: "",
+    content: "",
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const price = e.target.price.value;
-    const location = e.target.location.value;
-    const division = e.target.division.value;
-    const image = e.target.coverImage.value;
-    const details = e.target.description.value;
-    const duration = e.target.duration.value;
-    const tourData = {
-      name,
-      price,
-      location,
-      division,
-      image,
-      details,
-      duration,
-    };
-    console.log(tourData);
 
     try {
       const response = await fetch("http://localhost:5000/packages", {
@@ -30,23 +25,52 @@ const AddPackage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(tourData),
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      console.log("Package added successfully!");
+      toast.success("Package Added Successfully!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      // Reset the form data
+      setFormData({
+        name: "",
+        price: "",
+        location: "",
+        division: "",
+        coverImage: "",
+        duration: "",
+        content: "",
+      });
     } catch (error) {
       console.error("Error adding package:", error);
     }
   };
 
-  return (
-     <div className="container mx-auto p-4 md:p-6">
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-      <h3 className="text-center text-2xl md:text-3xl font-bold pb-2 uppercase border-b-2 mb-2">Add Package</h3>
+  return (
+    <div className="container mx-auto p-4 md:p-6">
+      <h3 className="text-center text-2xl md:text-3xl font-bold pb-2 uppercase border-b-2 mb-2">
+        Add Package
+      </h3>
       <form
         onSubmit={handleSubmit}
         className="mx-auto md:grid grid-cols-2 gap-4"
@@ -57,9 +81,12 @@ const AddPackage = () => {
           </label>
           <input
             required
+            placeholder="Name"
             type="text"
             name="name"
             className="p-2 border rounded-md w-full"
+            value={formData.name}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -69,9 +96,12 @@ const AddPackage = () => {
           </label>
           <input
             required
+            placeholder="Price"
             type="number"
             name="price"
             className="p-2 border rounded-md w-full"
+            value={formData.price}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -81,9 +111,12 @@ const AddPackage = () => {
           </label>
           <input
             required
+            placeholder="Location"
             type="text"
             name="location"
             className="p-2 border rounded-md w-full"
+            value={formData.location}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -95,6 +128,8 @@ const AddPackage = () => {
             required
             name="division"
             className="p-2 border rounded-md w-full"
+            value={formData.division}
+            onChange={handleInputChange}
           >
             <option value="">Select Division</option>
             <option value="Dhaka">Dhaka</option>
@@ -114,9 +149,12 @@ const AddPackage = () => {
           </label>
           <input
             required
+            placeholder="Image"
             type="text"
             name="coverImage"
             className="p-2 border rounded-md w-full"
+            value={formData.coverImage}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -126,9 +164,12 @@ const AddPackage = () => {
           </label>
           <input
             required
+            placeholder="Duration"
             type="text"
             name="duration"
             className="p-2 border rounded-md w-full"
+            value={formData.duration}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -138,27 +179,41 @@ const AddPackage = () => {
           </label>
           <textarea
             required
+            placeholder="Tour Details...."
             name="content"
             rows={6}
             className="p-2 border rounded-md w-full"
+            value={formData.content}
+            onChange={handleInputChange}
           />
         </div>
 
-        <div className="col-span-2  flex items-center justify-between">
+        <div className="col-span-2 flex items-center justify-between">
           <button
             type="submit"
             className="bg-green-500 text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
           >
             Submit
           </button>
-          <Link to={'/dashboard/packages'}>
-          <button
-            className="bg-red-500 text-white py-2 px-4 rounded-md"
-          >
-            Return
-          </button></Link>
+          <Link to={"/dashboard/packages"}>
+            <button className="bg-red-500 text-white py-2 px-4 rounded-md">
+              Return
+            </button>
+          </Link>
         </div>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

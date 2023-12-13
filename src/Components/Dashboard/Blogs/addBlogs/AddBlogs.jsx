@@ -2,14 +2,15 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
-const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
+const AddBlogs = () => {
   const [formData, setFormData] = useState({
     title: "",
     author: "",
-    image: "",
-    content: "",
+    coverImage: "",
     date: "",
+    content: "",
   });
 
   const handleChange = (e) => {
@@ -20,11 +21,46 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your logic to handle form submission, e.g., send data to the server
-    console.log("Form submitted:", formData);
-    handleModalClose();
+
+    try {
+      const response = await fetch("http://localhost:5000/blogs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      toast.success("Blog Added Successfully!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      // Reset the form data
+      setFormData({
+        title: "",
+        author: "",
+        coverImage: "",
+        date: "",
+        content: "",
+      });
+
+
+    } catch (error) {
+      console.error("Error adding blog:", error);
+    }
   };
 
   return (
@@ -42,9 +78,12 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
           </label>
           <input
             required
+            placeholder="Title"
             type="text"
-            name="name"
+            name="title"
             className="p-2 border rounded-md w-full"
+            value={formData.title}
+            onChange={handleChange}
           />
         </div>
 
@@ -54,12 +93,14 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
           </label>
           <input
             required
+            placeholder="Author"
             type="text"
             name="author"
             className="p-2 border rounded-md w-full"
+            value={formData.author}
+            onChange={handleChange}
           />
         </div>
-
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -67,9 +108,12 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
           </label>
           <input
             required
+            placeholder="Image"
             type="text"
             name="coverImage"
             className="p-2 border rounded-md w-full"
+            value={formData.coverImage}
+            onChange={handleChange}
           />
         </div>
 
@@ -82,6 +126,8 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
             type="date"
             name="date"
             className="p-2 border rounded-md w-full"
+            value={formData.date}
+            onChange={handleChange}
           />
         </div>
 
@@ -91,9 +137,12 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
           </label>
           <textarea
             required
+            placeholder="Blog Details........"
             name="content"
             rows={6}
             className="p-2 border rounded-md w-full"
+            value={formData.content}
+            onChange={handleChange}
           />
         </div>
 
@@ -111,6 +160,18 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
           </Link>
         </div>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
