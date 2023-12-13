@@ -75,11 +75,11 @@ const Packages = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className=" bg-white">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white w-[80%]  overflow-y-auto max-w-screen-lg">
             <AddPackage
-              handleAddPackageClick={handleAddPackageClick}
               handleModalClose={handleModalClose}
+              handleAddPackageClick={handleAddPackageClick}
             />
           </div>
         </div>

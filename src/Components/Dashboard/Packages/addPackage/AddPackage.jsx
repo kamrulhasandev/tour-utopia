@@ -2,47 +2,63 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    price: 0,
-    location: "",
-    division: "",
-    coverImage: "",
-    description: "",
-    duration: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
+const AddPackage = ({ handleModalClose }) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your logic to handle form submission, e.g., send data to the server
-    console.log("Form submitted:", formData);
-    handleModalClose();
+    const name = e.target.name.value;
+    const price = e.target.price.value;
+    const location = e.target.location.value;
+    const division = e.target.division.value;
+    const image = e.target.coverImage.value;
+    const details = e.target.description.value;
+    const duration = e.target.duration.value;
+    const tourData = {
+      name,
+      price,
+      location,
+      division,
+      image,
+      details,
+      duration,
+    };
+    console.log(tourData);
+
+    try {
+      const response = await fetch("http://localhost:5000/packages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(tourData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      console.log("Package added successfully!");
+      handleModalClose();
+    } catch (error) {
+      console.error("Error adding package:", error);
+    }
   };
 
   return (
     <div className="container mx-auto p-6">
+
+      <h3 className="text-center text-3xl font-bold pb-2 uppercase border-b-2 mb-2">Add Package</h3>
       <form
         onSubmit={handleSubmit}
-        className="max-w-screen-lg mx-auto grid grid-cols-2 gap-4"
+        className="mx-auto md:grid grid-cols-2 gap-4"
       >
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Name
           </label>
           <input
+            required
             type="text"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -52,10 +68,9 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Price
           </label>
           <input
+            required
             type="number"
             name="price"
-            value={formData.price}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -65,10 +80,9 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Location
           </label>
           <input
+            required
             type="text"
             name="location"
-            value={formData.location}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -78,9 +92,8 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Division
           </label>
           <select
+            required
             name="division"
-            value={formData.division}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           >
             <option value="">Select Division</option>
@@ -100,22 +113,9 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Cover Image
           </label>
           <input
+            required
             type="text"
             name="coverImage"
-            value={formData.coverImage}
-            onChange={handleChange}
-            className="p-2 border rounded-md w-full"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Description
-          </label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -125,10 +125,20 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Duration
           </label>
           <input
+            required
             type="text"
             name="duration"
-            value={formData.duration}
-            onChange={handleChange}
+            className="p-2 border rounded-md w-full"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Description
+          </label>
+          <textarea
+            required
+            name="description"
             className="p-2 border rounded-md w-full"
           />
         </div>
