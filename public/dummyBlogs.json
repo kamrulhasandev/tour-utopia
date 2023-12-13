@@ -1,73 +1,82 @@
 [
-    {
-      "title": "Exploring the Enchanting Land of Iceland",
-      "author": "AdventurousExplorer",
-      "date": "2023-03-10",
-      "content": "Discover the breathtaking landscapes and natural wonders of Iceland, from the iconic Northern Lights to cascading waterfalls and geothermal hot springs.",
-      "image": "https://example.com/image1.jpg"
-    },
-    {
-      "title": "A Foodie's Paradise: Culinary Adventures in Italy",
-      "author": "FoodTraveler",
-      "date": "2023-03-15",
-      "content": "Embark on a gastronomic journey through the charming streets of Rome, Florence, and Naples, savoring authentic Italian cuisine and fine wines.",
-      "image": "https://example.com/image2.jpg"
-    },
-    {
-      "title": "Safari Thrills: Wildlife Encounters in Serengeti National Park",
-      "author": "WildlifeExplorer",
-      "date": "2023-03-20",
-      "content": "Experience the thrill of spotting the Big Five on a safari adventure in Tanzania's Serengeti National Park, where the untamed wilderness comes to life.",
-      "image": "https://example.com/image3.jpg"
-    },
-    {
-      "title": "Journey through History: Ancient Ruins of Machu Picchu",
-      "author": "HistoryBuff",
-      "date": "2023-03-25",
-      "content": "Uncover the mysteries of the Inca Empire as you explore the awe-inspiring ruins of Machu Picchu, nestled high in the Andes mountains of Peru.",
-      "image": "https://example.com/image4.jpg"
-    },
-    {
-      "title": "Sun, Sand, and Surf: Paradise Found in the Maldives",
-      "author": "IslandDreamer",
-      "date": "2023-03-30",
-      "content": "Escape to the idyllic Maldives, where crystal-clear turquoise waters, overwater bungalows, and vibrant coral reefs create a perfect tropical getaway.",
-      "image": "https://example.com/image5.jpg"
-    },
-    {
-      "title": "Cultural Immersion: Exploring Kyoto's Temples and Traditions",
-      "author": "CulturalNomad",
-      "date": "2023-04-05",
-      "content": "Immerse yourself in the rich cultural heritage of Kyoto, Japan, as you visit ancient temples, partake in tea ceremonies, and witness traditional performances.",
-      "image": "https://example.com/image6.jpg"
-    },
-    {
-      "title": "Adrift in Venice: Navigating the Canals of Romance",
-      "author": "RomanticWanderer",
-      "date": "2023-04-10",
-      "content": "Indulge in the romantic charm of Venice, Italy, as you float along its iconic canals, explore historic architecture, and savor exquisite Italian cuisine.",
-      "image": "https://example.com/image7.jpg"
-    },
-    {
-      "title": "Hiking the Inca Trail: A Trek to the Lost City of Choquequirao",
-      "author": "AdventureHiker",
-      "date": "2023-04-15",
-      "content": "Embark on a challenging yet rewarding trek along the Inca Trail to discover the lesser-known archaeological gem of Choquequirao, Peru's hidden treasure.",
-      "image": "https://example.com/image8.jpg"
-    },
-    {
-      "title": "Chasing Waterfalls: The Beauty of Plitvice Lakes National Park",
-      "author": "NatureEnthusiast",
-      "date": "2023-04-20",
-      "content": "Explore the stunning natural beauty of Croatia's Plitvice Lakes National Park, where cascading waterfalls and pristine lakes create a picturesque paradise.",
-      "image": "https://example.com/image9.jpg"
-    },
-    {
-      "title": "Sailing the Greek Isles: A Mediterranean Odyssey",
-      "author": "SeaExplorer",
-      "date": "2023-04-25",
-      "content": "Set sail on a mesmerizing journey through the Greek Isles, discovering hidden coves, ancient ruins, and the vibrant culture of this Mediterranean paradise.",
-      "image": "https://example.com/image10.jpg"
-    }
-  ]
-  
+  {
+    "id": "1",
+    "title": "A Foodie's Paradise: Culinary Adventures in Italy",
+    "author": "FoodTraveler",
+    "date": "2023-03-15",
+    "content": "Embark on a gastronomic journey through the charming streets of Rome, Florence, and Naples, savoring authentic Italian cuisine and fine wines.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "2",
+    "title": "A Foodie's Paradise: Culinary Adventures in Italy",
+    "author": "FoodTraveler",
+    "date": "2023-03-15",
+    "content": "Embark on a gastronomic journey through the charming streets of Rome, Florence, and Naples, savoring authentic Italian cuisine and fine wines.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-007.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Safari Thrills: Wildlife Encounters in Serengeti National Park",
+    "author": "WildlifeExplorer",
+    "date": "2023-03-20",
+    "content": "Experience the thrill of spotting the Big Five on a safari adventure in Tanzania's Serengeti National Park, where the untamed wilderness comes to life.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Journey through History: Ancient Ruins of Machu Picchu",
+    "author": "HistoryBuff",
+    "date": "2023-03-25",
+    "content": "Uncover the mysteries of the Inca Empire as you explore the awe-inspiring ruins of Machu Picchu, nestled high in the Andes mountains of Peru.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "5",
+    "title": "Sun, Sand, and Surf: Paradise Found in the Maldives",
+    "author": "IslandDreamer",
+    "date": "2023-03-30",
+    "content": "Escape to the idyllic Maldives, where crystal-clear turquoise waters, overwater bungalows, and vibrant coral reefs create a perfect tropical getaway.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Cultural Immersion: Exploring Kyoto's Temples and Traditions",
+    "author": "CulturalNomad",
+    "date": "2023-04-05",
+    "content": "Immerse yourself in the rich cultural heritage of Kyoto, Japan, as you visit ancient temples, partake in tea ceremonies, and witness traditional performances.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "7",
+    "title": "Adrift in Venice: Navigating the Canals of Romance",
+    "author": "RomanticWanderer",
+    "date": "2023-04-10",
+    "content": "Indulge in the romantic charm of Venice, Italy, as you float along its iconic canals, explore historic architecture, and savor exquisite Italian cuisine.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "8",
+    "title": "Hiking the Inca Trail: A Trek to the Lost City of Choquequirao",
+    "author": "AdventureHiker",
+    "date": "2023-04-15",
+    "content": "Embark on a challenging yet rewarding trek along the Inca Trail to discover the lesser-known archaeological gem of Choquequirao, Peru's hidden treasure.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "9",
+    "title": "Chasing Waterfalls: The Beauty of Plitvice Lakes National Park",
+    "author": "NatureEnthusiast",
+    "date": "2023-04-20",
+    "content": "Explore the stunning natural beauty of Croatia's Plitvice Lakes National Park, where cascading waterfalls and pristine lakes create a picturesque paradise.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  },
+  {
+    "id": "10",
+    "title": "Sailing the Greek Isles: A Mediterranean Odyssey",
+    "author": "SeaExplorer",
+    "date": "2023-04-25",
+    "content": "Set sail on a mesmerizing journey through the Greek Isles, discovering hidden coves, ancient ruins, and the vibrant culture of this Mediterranean paradise.",
+    "image": "https://adventor.wpengine.com/wp-content/uploads/2020/06/blog-010.jpg"
+  }
+]

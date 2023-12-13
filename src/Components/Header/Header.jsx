@@ -10,7 +10,9 @@ const Header = () => {
     { id: 1, name: "Home", url: "/" },
     { id: 2, name: "Destination", url: "/destination" },
     { id: 3, name: "About", url: "/about" },
-    { id: 4, name: "Contact", url: "/contact" },
+    { id: 4, name: "Blog", url: "/blog" },
+    { id: 5, name: "News", url: "/all-news" },
+    { id: 6, name: "Contact", url: "/contact" },
   ];
 
   const [open, setOpen] = useState(false);
@@ -22,10 +24,11 @@ const Header = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <header className=" mx-auto flex items-center justify-between fixed top-0 left-0 right-0  py-2 z-10 bg-white shadow-lg">
+    <header className=" mx-auto flex items-center justify-between fixed top-0 left-0 right-0  py-2 z-50 bg-white shadow-lg">
       {/* Logo */}
-      <div className="pl-5">
-        <img className="max-w-[150px]" src="/logo.png" alt="" />
+      <div className="pl-5 flex items-center gap-2">
+        <img className="max-w-[150px] h-16" src="/intro-6.png" alt="" />
+        <p className="text-3xl italic text-[#FF5522] font-bold">TOUR-UTOPIA</p>
       </div>
 
       {/* Navbar */}

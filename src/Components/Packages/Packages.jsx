@@ -25,7 +25,6 @@ const Packages = () => {
   };
 
   const randomDataSubset = getRandomSubset(data, 6);
-
   return (
     <div>
       <div className="max-w-screen-xl mx-auto px-5">

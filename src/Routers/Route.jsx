@@ -15,6 +15,11 @@ import Blogs from "../Components/Dashboard/Blogs/Blogs";
 import Booked from "../Components/Dashboard/Booked/Booked";
 import Packages from "../Components/Dashboard/Packages/Packages";
 import DashboardHome from "../Components/Dashboard/dashboardHome/DashboardHome";
+import Saved from "../Pages/Saved/Saved";
+import MyBooked from "../Pages/myBooked/MyBooked";
+import Blog from "../Pages/blog/Blog";
+import AllNews from "../Pages/news/AllNews";
+import BlogDetails from "../Pages/blogDetails/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +57,27 @@ const router = createBrowserRouter([
       {
         path: "/package/:id",
         element: <PackageDetails />,
+        // loader: ({ params }) => fetch(`/dummyBlogs.json"${params.id}`),
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDetails />,
+      },
+      {
+        path: "/all-news",
+        element: <AllNews />,
+      },
+      {
+        path: "/saved",
+        element: <Saved />,
+      },
+      {
+        path: "/myBooked",
+        element: <MyBooked />,
       },
     ],
   },
