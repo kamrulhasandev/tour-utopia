@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import AddNews from "./addNews/AddNews";
+import { Link } from "react-router-dom";
 
 const News = () => {
   const [news, setNews] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const itemsPerPage = 5;
 
@@ -45,14 +44,6 @@ const News = () => {
     setCurrentPage(selected);
   };
 
-  const handleAddNewsClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-center text-3xl font-bold">News Manage</h1>
@@ -64,25 +55,12 @@ const News = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button
-          className="bg-green-500 py-2 px-2 rounded-lg text-white"
-          onClick={handleAddNewsClick}
-        >
-          Add News
-        </button>
+        <Link to={"/dashboard/news/addNews"}>
+          <button className="bg-green-500 py-2 px-2 rounded-lg text-white">
+            Add News
+          </button>
+        </Link>
       </div>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className=" bg-white">
-            <AddNews
-              handleAddNewsClick={handleAddNewsClick}
-              handleModalClose={handleModalClose}
-            />
-          </div>
-        </div>
-      )}
 
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border rounded-lg shadow-md text-sm">
