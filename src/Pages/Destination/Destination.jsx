@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 const Destination = () => {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -17,6 +19,9 @@ const Destination = () => {
 
     fetchData();
   }, []);
+  const filteredCard = data.filter((item) =>
+    item.location.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <div className="">
       <div
@@ -25,11 +30,27 @@ const Destination = () => {
         }}
         className="w-full bg-center bg-cover h-64 flex justify-center items-center pt-[64px]" // Adjust the height as needed
       >
-        <h3 className="text-white text-3xl md:text-5xl font-bold">Destinations</h3>
+        <h3 className="text-white text-3xl md:text-5xl font-bold">
+          Destinations
+        </h3>
       </div>
       <div className="max-w-screen-xl mx-auto px-5">
+        <div className="w-1/2 mx-auto">
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search By Location "
+            className="p-3 outline-none rounded-md w-full mt-8 border-2 border-gray-400"
+            type="text"
+          />
+        </div>
+        {filteredCard.length === 0 && (
+          <h1 className="text-3xl text-center font-bold my-4">
+            There is no matched location
+          </h1>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
-          {data.map((item, index) => (
+          {filteredCard.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-2xl">
               <Link to={`/package/${item.id}`}>
                 <div className="image-container rounded-t-2xl">

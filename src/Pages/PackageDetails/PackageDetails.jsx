@@ -27,6 +27,7 @@ const PackageDetails = () => {
   }, []);
 
   const matchingResults = data.find((item) => item.id == id);
+  console.log(matchingResults);
   const popularTour = data.filter(
     (item) => item.location === matchingResults?.location
   );
