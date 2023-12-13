@@ -1,7 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { FaUser,FaTags,FaHeart,FaSignOutAlt,FaPoll     } from "react-icons/fa";
+import { FaUser,FaTags,FaHeart,FaSignOutAlt,FaPoll, FaBookmark     } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ProfileDropDown = () => {
@@ -17,7 +17,7 @@ const ProfileDropDown = () => {
         </div>
         <Transition
           as={Fragment}
-          enter="transition ease-out duration-100"
+          enter="transition ease-out duration-150"
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"
           leave="transition ease-in duration-75"
@@ -38,6 +38,34 @@ const ProfileDropDown = () => {
                   >
                     <FaPoll/>
                     Dashboard
+                  </button>
+                  </Link>
+                )}
+              </Menu.Item>
+                <Menu.Item>
+                {({ active }) => (
+                  <Link to={'/myBooked'}>
+                  <button
+                    className={`${
+                      active ? "bg-[#FF5522] text-white" : "text-gray-900"
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}
+                  >
+                    <FaBookmark/>
+                    My Booking
+                  </button>
+                  </Link>
+                )}
+              </Menu.Item>
+                <Menu.Item>
+                {({ active }) => (
+                  <Link to={'/saved'}>
+                  <button
+                    className={`${
+                      active ? "bg-[#FF5522] text-white" : "text-gray-900"
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}
+                  >
+                    <FaHeart className=" text-red-500"/>
+                    Saved
                   </button>
                   </Link>
                 )}
