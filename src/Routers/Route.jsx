@@ -106,7 +106,7 @@ const router = createBrowserRouter([
         element: <Blogs />,
       },
       {
-        path: "/dashboard/",
+        path: "/dashboard/booked",
         element: <Booked />,
       },
     ],

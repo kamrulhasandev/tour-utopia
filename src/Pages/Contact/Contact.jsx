@@ -98,7 +98,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="bg-[#FF5522] w-1/2 text-white p-2 rounded"
+                  className="bg-[#FF5522] w-full text-white p-2 rounded"
                 >
                   Submit
                 </button>
