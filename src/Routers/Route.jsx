@@ -8,6 +8,13 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import SearchResult from "../Pages/SearchResult/SearchResult";
 import PackageDetails from "../Pages/PackageDetails/PackageDetails";
+import Dashboard from "../Layout/Dashboard";
+import Users from "../Components/Dashboard/Users/Users";
+import News from "../Components/Dashboard/News/News";
+import Blogs from "../Components/Dashboard/Blogs/Blogs";
+import Booked from "../Components/Dashboard/Booked/Booked";
+import Packages from "../Components/Dashboard/Packages/Packages";
+import DashboardHome from "../Components/Dashboard/dashboardHome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +52,36 @@ const router = createBrowserRouter([
       {
         path: "/package/:id",
         element: <PackageDetails />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <DashboardHome />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <Users />,
+      },
+      {
+        path: "/dashboard/packages",
+        element: <Packages />,
+      },
+      {
+        path: "/dashboard/news",
+        element: <News />,
+      },
+      {
+        path: "/dashboard/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/dashboard/booked",
+        element: <Booked />,
       },
     ],
   },

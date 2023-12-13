@@ -59,7 +59,7 @@ const Header = () => {
           <Link onClick={() => setOpen(!open)} to={"/login"}>
             <button className="md:hidden flex items-center justify-center gap-1 font-semibold text-[#6C7171]">
               <FaUser />
-              Login/Signup
+              Sign In
             </button>
           </Link>
         )}
@@ -75,7 +75,7 @@ const Header = () => {
           <Link to={"/login"}>
             <button className="hidden md:flex items-center justify-center gap-1 font-semibold text-[#6C7171]">
               <FaUser />
-              Login/Signup
+              Sign In
             </button>
           </Link>
         )}
