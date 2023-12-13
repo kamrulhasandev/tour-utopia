@@ -20,6 +20,9 @@ import MyBooked from "../Pages/myBooked/MyBooked";
 import Blog from "../Pages/blog/Blog";
 import AllNews from "../Pages/news/AllNews";
 import BlogDetails from "../Pages/blogDetails/BlogDetails";
+import AddPackage from './../Components/Dashboard/Packages/addPackage/AddPackage';
+import AddNews from "../Components/Dashboard/News/addNews/AddNews";
+import AddBlogs from "../Components/Dashboard/Blogs/addBlogs/AddBlogs";
 
 const router = createBrowserRouter([
   {
@@ -98,12 +101,24 @@ const router = createBrowserRouter([
         element: <Packages />,
       },
       {
+        path: "/dashboard/packages/addPackage",
+        element: <AddPackage />,
+      },
+      {
         path: "/dashboard/news",
         element: <News />,
       },
       {
+        path: "/dashboard/news/addNews",
+        element: <AddNews />,
+      },
+      {
         path: "/dashboard/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "/dashboard/blogs/addBlog",
+        element: <AddBlogs />,
       },
       {
         path: "/dashboard/booked",

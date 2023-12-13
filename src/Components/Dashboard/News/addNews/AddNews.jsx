@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const AddNews = ({ handleModalClose, handleAddNewsClick }) => {
+const AddNews = () => {
   const [formData, setFormData] = useState({
     headline: "",
     source: "",
@@ -23,24 +24,24 @@ const AddNews = ({ handleModalClose, handleAddNewsClick }) => {
     e.preventDefault();
     // Add your logic to handle form submission, e.g., send data to the server
     console.log("Form submitted:", formData);
-    handleModalClose();
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-4 md:p-6">
+
+      <h3 className="text-center text-2xl md:text-3xl font-bold pb-2 uppercase border-b-2 mb-2">Add News</h3>
       <form
         onSubmit={handleSubmit}
-        className="max-w-screen-lg mx-auto grid grid-cols-2 gap-4"
+        className="mx-auto md:grid grid-cols-2 gap-4"
       >
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Headline
           </label>
           <input
+            required
             type="text"
             name="headline"
-            value={formData.headline}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -50,10 +51,9 @@ const AddNews = ({ handleModalClose, handleAddNewsClick }) => {
             Source
           </label>
           <input
+            required
             type="text"
             name="source"
-            value={formData.source}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -63,52 +63,54 @@ const AddNews = ({ handleModalClose, handleAddNewsClick }) => {
             Date
           </label>
           <input
-            type="text"
+            required
+            type="date"
             name="date"
-            value={formData.date}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Description
-          </label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="p-2 border rounded-md w-full"
-          />
-        </div>
+        
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Image
+            Cover Image
           </label>
           <input
+            required
             type="text"
-            name="image"
-            value={formData.image}
-            onChange={handleChange}
+            name="coverImage"
             className="p-2 border rounded-md w-full"
           />
         </div>
 
-        <div className="col-span-2 flex justify-between">
+        
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Content
+          </label>
+          <textarea
+            required
+            name="content"
+            rows={6}
+            className="p-2 border rounded-md w-full"
+          />
+        </div>
+
+        <div className="col-span-2  flex items-center justify-between">
           <button
             type="submit"
-            className="bg-green-500 text-white py-2 px-4 rounded-md"
+            className="bg-green-500 text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
           >
             Submit
           </button>
+          <Link to={'/dashboard/news'}>
           <button
-            onClick={handleModalClose}
             className="bg-red-500 text-white py-2 px-4 rounded-md"
           >
-            Close
-          </button>
+            Return
+          </button></Link>
         </div>
       </form>
     </div>

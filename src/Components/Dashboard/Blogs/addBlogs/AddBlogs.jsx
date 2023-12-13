@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
   const [formData, setFormData] = useState({
@@ -27,20 +28,22 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-4 md:p-6">
+      <h3 className="text-center text-2xl md:text-3xl font-bold pb-2 uppercase border-b-2 mb-2">
+        Add Blog
+      </h3>
       <form
         onSubmit={handleSubmit}
-        className="max-w-screen-lg mx-auto grid grid-cols-2 gap-4"
+        className="mx-auto md:grid grid-cols-2 gap-4"
       >
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Title
           </label>
           <input
+            required
             type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
+            name="name"
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -50,10 +53,22 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
             Author
           </label>
           <input
+            required
             type="text"
             name="author"
-            value={formData.author}
-            onChange={handleChange}
+            className="p-2 border rounded-md w-full"
+          />
+        </div>
+
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Cover Image
+          </label>
+          <input
+            required
+            type="text"
+            name="coverImage"
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -63,10 +78,9 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
             Date
           </label>
           <input
-            type="text"
+            required
+            type="date"
             name="date"
-            value={formData.date}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
           />
         </div>
@@ -76,39 +90,25 @@ const AddBlogs = ({ handleModalClose, handleAddBlogClick }) => {
             Content
           </label>
           <textarea
+            required
             name="content"
-            value={formData.content}
-            onChange={handleChange}
+            rows={6}
             className="p-2 border rounded-md w-full"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Image
-          </label>
-          <input
-            type="text"
-            name="image"
-            value={formData.image}
-            onChange={handleChange}
-            className="p-2 border rounded-md w-full"
-          />
-        </div>
-
-        <div className="col-span-2 flex justify-between">
+        <div className="col-span-2  flex items-center justify-between">
           <button
             type="submit"
-            className="bg-green-500 text-white py-2 px-4 rounded-md"
+            className="bg-green-500 text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
           >
             Submit
           </button>
-          <button
-            onClick={handleModalClose}
-            className="bg-red-500 text-white py-2 px-4 rounded-md"
-          >
-            Close
-          </button>
+          <Link to={"/dashboard/blogs"}>
+            <button className="bg-red-500 text-white py-2 px-4 rounded-md">
+              Return
+            </button>
+          </Link>
         </div>
       </form>
     </div>

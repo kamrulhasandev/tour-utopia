@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const AddPackage = ({ handleModalClose }) => {
+const AddPackage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -37,16 +38,15 @@ const AddPackage = ({ handleModalClose }) => {
       }
 
       console.log("Package added successfully!");
-      handleModalClose();
     } catch (error) {
       console.error("Error adding package:", error);
     }
   };
 
   return (
-    <div className="container mx-auto p-6">
+     <div className="container mx-auto p-4 md:p-6">
 
-      <h3 className="text-center text-3xl font-bold pb-2 uppercase border-b-2 mb-2">Add Package</h3>
+      <h3 className="text-center text-2xl md:text-3xl font-bold pb-2 uppercase border-b-2 mb-2">Add Package</h3>
       <form
         onSubmit={handleSubmit}
         className="mx-auto md:grid grid-cols-2 gap-4"
@@ -134,28 +134,29 @@ const AddPackage = ({ handleModalClose }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Description
+            Content
           </label>
           <textarea
             required
-            name="description"
+            name="content"
+            rows={6}
             className="p-2 border rounded-md w-full"
           />
         </div>
 
-        <div className="col-span-2 flex justify-between">
+        <div className="col-span-2  flex items-center justify-between">
           <button
             type="submit"
-            className="bg-green-500 text-white py-2 px-4 rounded-md"
+            className="bg-green-500 text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
           >
             Submit
           </button>
+          <Link to={'/dashboard/packages'}>
           <button
-            onClick={handleModalClose}
             className="bg-red-500 text-white py-2 px-4 rounded-md"
           >
-            Close
-          </button>
+            Return
+          </button></Link>
         </div>
       </form>
     </div>
