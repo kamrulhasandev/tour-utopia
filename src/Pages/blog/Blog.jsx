@@ -51,7 +51,7 @@ const Blog = () => {
                 <p className="text-gray-400 text-[19px] mb-5">
                   {item.content}
                 </p>
-                <button
+                <button 
                   className="bg-[#FF5522]  flex justify-center py-3 px-6 rounded-md text-white hover:bg-[#ec7551] transition-all w-32"
                 >
                   Read More
