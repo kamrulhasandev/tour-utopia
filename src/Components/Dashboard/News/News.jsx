@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -12,7 +13,7 @@ const News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyNews.json");
+        const response = await fetch("http://localhost:5000/news");
         const data = await response.json();
         setNews(data);
       } catch (error) {
@@ -42,6 +43,56 @@ const News = () => {
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
+  };
+
+  const handleDelete = (articleId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(
+            `http://localhost:5000/news/${articleId}`,
+            {
+              method: "DELETE",
+            }
+          );
+
+          if (response.ok) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your news article has been deleted.",
+              icon: "success",
+            });
+
+            // Update the state or refetch the data after deletion
+            const updatedNews = news.filter(
+              (article) => article._id !== articleId
+            );
+            setNews(updatedNews);
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: "Failed to delete the news article.",
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting news article:", error);
+          Swal.fire({
+            title: "Error",
+            text: "An error occurred while deleting the news article.",
+            icon: "error",
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -87,7 +138,7 @@ const News = () => {
                 </td>
                 <td className="py-2 px-4 sm:table-cell">
                   <img
-                    src={article?.image}
+                    src={article?.coverImage}
                     alt={article?.name}
                     className="w-16 h-16 object-cover rounded-full"
                   />
@@ -96,10 +147,15 @@ const News = () => {
                 <td className="py-2 px-4 sm:table-cell">{article?.source}</td>
 
                 <td className="py-2  flex gap-1  px-4 ">
-                  <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
-                    Edit
-                  </button>
-                  <button className="bg-red-500 px-2 text-white py-1 text-xs rounded-full ">
+                  <Link to={`/dashboard/news/edit/${article._id}`}>
+                    <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
+                      Edit
+                    </button>
+                  </Link>
+                  <button
+                    className="bg-red-500 px-2 text-white py-1 text-xs rounded-full "
+                    onClick={() => handleDelete(article._id)}
+                  >
                     Delete
                   </button>
                 </td>

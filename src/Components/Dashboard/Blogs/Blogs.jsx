@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -12,7 +13,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyBlogs.json");
+        const response = await fetch("http://localhost:5000/blogs");
         const data = await response.json();
         setBlogs(data);
       } catch (error) {
@@ -42,6 +43,54 @@ const Blogs = () => {
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
+  };
+
+  const handleDelete = (blogId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(
+            `http://localhost:5000/blogs/${blogId}`,
+            {
+              method: "DELETE",
+            }
+          );
+
+          if (response.ok) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your blog has been deleted.",
+              icon: "success",
+            });
+
+            // Update the state or refetch the data after deletion
+            const updatedBlogs = blogs.filter((blog) => blog._id !== blogId);
+            setBlogs(updatedBlogs);
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: "Failed to delete the blog.",
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting blog:", error);
+          Swal.fire({
+            title: "Error",
+            text: "An error occurred while deleting the blog.",
+            icon: "error",
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -85,7 +134,7 @@ const Blogs = () => {
                 </td>
                 <td className="py-2 px-4 sm:table-cell">
                   <img
-                    src={blog?.image}
+                    src={blog?.coverImage}
                     alt={blog?.name}
                     className="w-16 h-16 object-cover rounded-full"
                   />
@@ -94,10 +143,15 @@ const Blogs = () => {
                 <td className="py-2 px-4 sm:table-cell">{blog?.author}</td>
 
                 <td className="py-2  flex gap-1  px-4 ">
-                  <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
-                    Edit
-                  </button>
-                  <button className="bg-red-500 px-2 text-white py-1 text-xs rounded-full ">
+                  <Link to={`/dashboard/blogs/edit/${blog?._id}`}>
+                    <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
+                      Edit
+                    </button>
+                  </Link>
+                  <button
+                    className="bg-red-500 px-2 text-white py-1 text-xs rounded-full "
+                    onClick={() => handleDelete(blog?._id)}
+                  >
                     Delete
                   </button>
                 </td>

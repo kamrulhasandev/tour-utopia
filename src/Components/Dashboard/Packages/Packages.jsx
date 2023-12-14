@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "./Packages.css";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Packages = () => {
   const [packages, setPackages] = useState([]);
@@ -13,7 +14,7 @@ const Packages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyPackages.json");
+        const response = await fetch("http://localhost:5000/packages");
         const data = await response.json();
         setPackages(data);
       } catch (error) {
@@ -45,6 +46,56 @@ const Packages = () => {
     setCurrentPage(selected);
   };
 
+  const handleDelete = (tourPackageId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be delete this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(
+            `http://localhost:5000/packages/${tourPackageId}`,
+            {
+              method: "DELETE",
+            }
+          );
+
+          if (response.ok) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+
+            // Update the state or refetch the data after deletion
+            const updatedPackages = packages.filter(
+              (tourPackage) => tourPackage._id !== tourPackageId
+            );
+            setPackages(updatedPackages);
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: "Failed to delete the package.",
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting package:", error);
+          Swal.fire({
+            title: "Error",
+            text: "An error occurred while deleting the package.",
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-center text-3xl font-bold">Packages Manage</h1>
@@ -56,10 +107,10 @@ const Packages = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <Link to={'/dashboard/packages/addPackage'}>
-        <button className="bg-green-500 py-2 px-2 rounded-lg text-white">
-          Add Package
-        </button>
+        <Link to={"/dashboard/packages/addPackage"}>
+          <button className="bg-green-500 py-2 px-2 rounded-lg text-white">
+            Add Package
+          </button>
         </Link>
       </div>
 
@@ -107,10 +158,15 @@ const Packages = () => {
                   ${tourPackage?.price}
                 </td>
                 <td className="py-2  flex gap-1  px-4 ">
-                  <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
-                    Edit
-                  </button>
-                  <button className="bg-red-500 px-2 text-white py-1 text-xs rounded-full ">
+                  <Link to={`/dashboard/packages/edit/${tourPackage._id}`}>
+                    <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
+                      Edit
+                    </button>
+                  </Link>
+                  <button
+                    className="bg-red-500 px-2 text-white py-1 text-xs rounded-full "
+                    onClick={() => handleDelete(tourPackage._id)}
+                  >
                     Delete
                   </button>
                 </td>
