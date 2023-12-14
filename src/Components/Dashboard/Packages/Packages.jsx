@@ -13,7 +13,7 @@ const Packages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyPackages.json");
+        const response = await fetch("http://localhost:5000/packages");
         const data = await response.json();
         setPackages(data);
       } catch (error) {
@@ -107,9 +107,11 @@ const Packages = () => {
                   ${tourPackage?.price}
                 </td>
                 <td className="py-2  flex gap-1  px-4 ">
+                  <Link to={`/dashboard/packages/edit/${tourPackage._id}`}>
                   <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
                     Edit
                   </button>
+                  </Link>
                   <button className="bg-red-500 px-2 text-white py-1 text-xs rounded-full ">
                     Delete
                   </button>

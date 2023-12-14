@@ -12,7 +12,7 @@ const News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyNews.json");
+        const response = await fetch("http://localhost:5000/news");
         const data = await response.json();
         setNews(data);
       } catch (error) {
@@ -87,7 +87,7 @@ const News = () => {
                 </td>
                 <td className="py-2 px-4 sm:table-cell">
                   <img
-                    src={article?.image}
+                    src={article?.coverImage}
                     alt={article?.name}
                     className="w-16 h-16 object-cover rounded-full"
                   />
@@ -96,9 +96,11 @@ const News = () => {
                 <td className="py-2 px-4 sm:table-cell">{article?.source}</td>
 
                 <td className="py-2  flex gap-1  px-4 ">
-                  <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
-                    Edit
-                  </button>
+                  <Link to={`/dashboard/news/edit/${article._id}`}>
+                    <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
+                      Edit
+                    </button>
+                  </Link>
                   <button className="bg-red-500 px-2 text-white py-1 text-xs rounded-full ">
                     Delete
                   </button>
