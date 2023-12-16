@@ -21,6 +21,12 @@ import Blog from "../Pages/blog/Blog";
 import AllNews from "../Pages/news/AllNews";
 import BlogDetails from "../Pages/blogDetails/BlogDetails";
 import NewsDetails from "../Pages/newsDetails/NewsDetails";
+import AddPackage from "./../Components/Dashboard/Packages/addPackage/AddPackage";
+import AddNews from "../Components/Dashboard/News/addNews/AddNews";
+import AddBlogs from "../Components/Dashboard/Blogs/addBlogs/AddBlogs";
+import EditPackage from "../Components/Dashboard/Packages/editPackage/EditPackage";
+import EditNews from "../Components/Dashboard/News/editNews/EditNews";
+import EditBlog from "../Components/Dashboard/Blogs/editBlog/editBlog";
 
 const router = createBrowserRouter([
   {
@@ -103,15 +109,39 @@ const router = createBrowserRouter([
         element: <Packages />,
       },
       {
+        path: "/dashboard/packages/addPackage",
+        element: <AddPackage />,
+      },
+      {
+        path: "/dashboard/packages/edit/:packageId",
+        element: <EditPackage />,
+      },
+      {
         path: "/dashboard/news",
         element: <News />,
+      },
+      {
+        path: "/dashboard/news/addNews",
+        element: <AddNews />,
+      },
+      {
+        path: "/dashboard/news/edit/:newsId",
+        element: <EditNews />,
       },
       {
         path: "/dashboard/blogs",
         element: <Blogs />,
       },
       {
-        path: "/dashboard/",
+        path: "/dashboard/blogs/addBlog",
+        element: <AddBlogs />,
+      },
+      {
+        path: "/dashboard/blogs/edit/:blogId",
+        element: <EditBlog />,
+      },
+      {
+        path: "/dashboard/booked",
         element: <Booked />,
       },
     ],

@@ -1,49 +1,92 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
+const AddPackage = () => {
   const [formData, setFormData] = useState({
     name: "",
-    price: 0,
+    price: "",
     location: "",
     division: "",
     coverImage: "",
-    description: "",
     duration: "",
+    content: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/packages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      toast.success("Package Added Successfully!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      // Reset the form data
+      setFormData({
+        name: "",
+        price: "",
+        location: "",
+        division: "",
+        coverImage: "",
+        duration: "",
+        content: "",
+      });
+    } catch (error) {
+      console.error("Error adding package:", error);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your logic to handle form submission, e.g., send data to the server
-    console.log("Form submitted:", formData);
-    handleModalClose();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-4 md:p-6">
+      <h3 className="text-center text-2xl md:text-3xl font-bold pb-2 uppercase border-b-2 mb-2">
+        Add Package
+      </h3>
       <form
         onSubmit={handleSubmit}
-        className="max-w-screen-lg mx-auto grid grid-cols-2 gap-4"
+        className="mx-auto md:grid grid-cols-2 gap-4"
       >
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Name
           </label>
           <input
+            required
+            placeholder="Name"
             type="text"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
+            value={formData.name}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -52,11 +95,13 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Price
           </label>
           <input
+            required
+            placeholder="Price"
             type="number"
             name="price"
-            value={formData.price}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
+            value={formData.price}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -65,11 +110,13 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Location
           </label>
           <input
+            required
+            placeholder="Location"
             type="text"
             name="location"
-            value={formData.location}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
+            value={formData.location}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -78,10 +125,11 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Division
           </label>
           <select
+            required
             name="division"
-            value={formData.division}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
+            value={formData.division}
+            onChange={handleInputChange}
           >
             <option value="">Select Division</option>
             <option value="Dhaka">Dhaka</option>
@@ -100,23 +148,13 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Cover Image
           </label>
           <input
+            required
+            placeholder="Image"
             type="text"
             name="coverImage"
+            className="p-2 border rounded-md w-full"
             value={formData.coverImage}
-            onChange={handleChange}
-            className="p-2 border rounded-md w-full"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Description
-          </label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="p-2 border rounded-md w-full"
+            onChange={handleInputChange}
           />
         </div>
 
@@ -125,29 +163,57 @@ const AddPackage = ({ handleModalClose, handleAddPackageClick }) => {
             Duration
           </label>
           <input
+            required
+            placeholder="Duration"
             type="text"
             name="duration"
-            value={formData.duration}
-            onChange={handleChange}
             className="p-2 border rounded-md w-full"
+            value={formData.duration}
+            onChange={handleInputChange}
           />
         </div>
 
-        <div className="col-span-2 flex justify-between">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Content
+          </label>
+          <textarea
+            required
+            placeholder="Tour Details...."
+            name="content"
+            rows={6}
+            className="p-2 border rounded-md w-full"
+            value={formData.content}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="col-span-2 flex items-center justify-between">
           <button
             type="submit"
-            className="bg-green-500 text-white py-2 px-4 rounded-md"
+            className="bg-green-500 text-white py-2 px-4 rounded-md mb-2 md:mb-0 md:mr-2"
           >
             Submit
           </button>
-          <button
-            onClick={handleModalClose}
-            className="bg-red-500 text-white py-2 px-4 rounded-md"
-          >
-            Close
-          </button>
+          <Link to={"/dashboard/packages"}>
+            <button className="bg-red-500 text-white py-2 px-4 rounded-md">
+              Return
+            </button>
+          </Link>
         </div>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
