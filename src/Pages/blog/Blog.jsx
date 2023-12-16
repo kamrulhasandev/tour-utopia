@@ -27,13 +27,13 @@ const Blog = () => {
       >
         <h3 className="text-white text-3xl md:text-5xl font-bold">Blog</h3>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 container mx-auto py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 container px-5 md:px-0 mx-auto py-10">
         {data.map((item) => (
           <div key={item.id} className="shadow-2xl rounded-2xl">
             <Link to={`/blog/${item.id}`}>
               <div className="overflow-hidden rounded-t-2xl">
                 <img
-                  className="rounded-t-2xl hover:scale-150 duration-700 transition-all"
+                  className="rounded-t-2xl h-[500px] w-full object-cover hover:scale-150 duration-700 transition-all"
                   src={item.image}
                   alt=""
                 />
@@ -49,11 +49,9 @@ const Blog = () => {
                   {item.title}
                 </h1>
                 <p className="text-gray-400 text-[19px] mb-5">
-                  {item.content}
+                  {item.content.substring(0, 200)}....
                 </p>
-                <button 
-                  className="bg-[#FF5522]  flex justify-center py-3 px-6 rounded-md text-white hover:bg-[#ec7551] transition-all w-32"
-                >
+                <button className="bg-[#FF5522]  flex justify-center py-3 px-6 rounded-md text-white hover:bg-[#ec7551] transition-all w-32">
                   Read More
                 </button>
               </div>

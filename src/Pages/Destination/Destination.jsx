@@ -1,10 +1,38 @@
-import { useEffect, useState } from "react";
-import { FaClock, FaStar } from "react-icons/fa";
+import { useContext, useEffect, useState } from "react";
+import { FaArrowRight, FaClock, FaHeart, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Destination = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user?.email);
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || []
+  );
+  const toggleFavorite = (card) => {
+    if (!user) {
+      alert("you need to login first")
+      return;
+    }
+
+    const isFavorite = favorites.some(
+      (favCard) => favCard.id === card.id && favCard.user_email === user.email
+    );
+
+    const updatedCard = { ...card, user_email: user.email };
+
+    const updatedFavorites = isFavorite
+      ? favorites.filter(
+          (favCard) =>
+            favCard.id !== card.id || favCard.user_email !== user.email
+        )
+      : [...favorites, updatedCard];
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,9 +80,19 @@ const Destination = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
           {filteredCard.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-2xl">
-              <Link to={`/package/${item.id}`}>
+              <div>
                 <div className="image-container rounded-t-2xl">
-                  <img className="rounded-t-2xl" src={item.image} alt="" />
+                  <div className="relative">
+                    <img className="rounded-t-2xl" src={item.image} alt="" />
+                    <FaHeart
+                      onClick={() => toggleFavorite(item)}
+                      className={`absolute top-3 cursor-pointer right-4 text-[20px] ${
+                        favorites.some((favItem) => favItem.id === item.id)
+                          ? "text-red-500"
+                          : "text-white"
+                      }`}
+                    />
+                  </div>
                   <div className="overlay"></div>
                 </div>
                 <div className="p-5">
@@ -89,9 +127,12 @@ const Destination = () => {
                         ${item.price}
                       </span>
                     </p>
+                    <Link to={`/package/${item.id}`}>
+                      <FaArrowRight className="text-[#FF5522] font-bold" />
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </div>

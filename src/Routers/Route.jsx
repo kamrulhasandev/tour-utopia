@@ -20,6 +20,7 @@ import MyBooked from "../Pages/myBooked/MyBooked";
 import Blog from "../Pages/blog/Blog";
 import AllNews from "../Pages/news/AllNews";
 import BlogDetails from "../Pages/blogDetails/BlogDetails";
+import NewsDetails from "../Pages/newsDetails/NewsDetails";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/all-news",
         element: <AllNews />,
+      },
+      {
+        path: "/news/:id",
+        element: <NewsDetails />,
       },
       {
         path: "/saved",
