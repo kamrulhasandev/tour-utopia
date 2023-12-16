@@ -20,6 +20,7 @@ import MyBooked from "../Pages/myBooked/MyBooked";
 import Blog from "../Pages/blog/Blog";
 import AllNews from "../Pages/news/AllNews";
 import BlogDetails from "../Pages/blogDetails/BlogDetails";
+import NewsDetails from "../Pages/newsDetails/NewsDetails";
 import AddPackage from "./../Components/Dashboard/Packages/addPackage/AddPackage";
 import AddNews from "../Components/Dashboard/News/addNews/AddNews";
 import AddBlogs from "../Components/Dashboard/Blogs/addBlogs/AddBlogs";
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "/all-news",
         element: <AllNews />,
+      },
+      {
+        path: "/news/:id",
+        element: <NewsDetails />,
       },
       {
         path: "/saved",

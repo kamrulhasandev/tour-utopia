@@ -56,6 +56,7 @@ const AuthProvider = ({ children }) => {
   // logout
   const logOut = () => {
     setLoading(true);
+    localStorage.removeItem("favorites");
     return signOut(auth);
   };
 
