@@ -2,15 +2,27 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaClock, FaStar, FaLongArrowAltRight } from "react-icons/fa";
+import { loadStripe } from "@stripe/stripe-js";
 
 const PackageDetails = () => {
   const [data, setData] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
   const [showNotLoggedInPopup, setShowNotLoggedInPopup] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useContext(AuthContext);
+
+  const [bookingForm, setBookingForm] = useState({
+    name: user?.displayName || "",
+    email: user?.email || "",
+    phoneNumber: "",
+  });
+
+  // Update form field values
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setBookingForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,25 +38,70 @@ const PackageDetails = () => {
     fetchData();
   }, []);
 
-  const matchingResults = data.find((item) => item.id == id);
+  const matchingResults = data.find((item) => item.id == id); // todo: set mongodb _id
   console.log(matchingResults);
   const popularTour = data.filter(
     (item) => item.location === matchingResults?.location
   );
-  console.log(popularTour);
 
-  const handleBookNow = () => {
-    if (user?.email) {
-      // User is logged in, show booking success popup
-      setShowPopup(true);
-    } else {
-      // User is not logged in, show not logged in popup
-      setShowNotLoggedInPopup(true);
+  // payment---------------------------------
+
+  const handleBookNow = async () => {
+    // Check if the user is logged in
+    if (!user?.email) {
+      // Redirect to the login page
+      navigate("/login");
+      return;
     }
-  };
 
-  const closePopup = () => {
-    setShowPopup(false);
+    // Check if required form fields are filled
+    if (!bookingForm.name || !bookingForm.email || !bookingForm.phoneNumber) {
+      alert("Please fill out the form");
+      return;
+    }
+
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
+
+    // Assuming matchingResults is defined in your frontend
+    const matchingResult = matchingResults;
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/create-checkout-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            matchingResult,
+            userEmail: bookingForm.name,
+            userName: bookingForm.email,
+            userPhoneNo: bookingForm.phoneNumber,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const session = await response.json();
+
+        // Redirect the user to the Stripe Checkout page with only the sessionId
+        const result = await stripe.redirectToCheckout({
+          sessionId: session.id,
+        });
+
+        if (result.error) {
+          // Handle errors
+          console.error(result.error.message);
+        }
+      } else {
+        // Handle errors with the server response
+        console.error("Server error:", response.status, response.statusText);
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error("Network error:", error.message);
+    }
   };
 
   return (
@@ -109,64 +166,68 @@ const PackageDetails = () => {
                   <br />
                   From
                 </small>
-                <h4 className="text-4xl font-bold">
-                  ${matchingResults?.price}{" "}
+                <h4 className="text-3xl font-bold">
+                  BDT {matchingResults?.price}{" "}
                   <span className="text-base"> / Per Person</span>
                 </h4>
               </div>
-              <div className="p-5 flex flex-col gap-5">
-                <div className="flex items-center gap-3">
-                  <label
-                    className="w-2/5 font-bold text-[#6C7171]"
-                    htmlFor="name"
-                  >
-                    Full Name:{" "}
-                  </label>
-                  <input
-                    className="w-[100%] border-2 p-2 rounded-md"
-                    type="text"
-                    name=""
-                    value={user?.displayName}
-                    id=""
-                  />
+              <form>
+                <div className="p-5 flex flex-col gap-5">
+                  <div className="flex items-center gap-3">
+                    <label
+                      className="w-2/5 font-bold text-[#6C7171]"
+                      htmlFor="name"
+                    >
+                      Full Name:{" "}
+                    </label>
+                    <input
+                      className="w-[100%] border-2 p-2 rounded-md"
+                      type="text"
+                      name="name"
+                      value={bookingForm.name}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <label
+                      className="w-2/5 font-bold text-[#6C7171]"
+                      htmlFor="email"
+                    >
+                      Email :{" "}
+                    </label>
+                    <input
+                      className="w-[100%] border-2 p-2 rounded-md"
+                      type="text"
+                      name="email"
+                      value={bookingForm.email}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <label
+                      className="w-2/5 font-bold text-[#6C7171]"
+                      htmlFor="phoneNumber"
+                    >
+                      Mobile :{" "}
+                    </label>
+                    <input
+                      className="w-[100%] border-2 p-2 rounded-md"
+                      type="text"
+                      name="phoneNumber"
+                      placeholder="Mobile Number"
+                      value={bookingForm.phoneNumber}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <label
-                    className="w-2/5 font-bold text-[#6C7171]"
-                    htmlFor="name"
-                  >
-                    Email :{" "}
-                  </label>
-                  <input
-                    className="w-[100%] border-2 p-2 rounded-md"
-                    type="text"
-                    name=""
-                    value={user?.email}
-                    id=""
-                  />
-                </div>
-                <div className="flex items-center gap-3">
-                  <label
-                    className="w-2/5 font-bold text-[#6C7171]"
-                    htmlFor="name"
-                  >
-                    Mobile :{" "}
-                  </label>
-                  <input
-                    className="w-[100%] border-2 p-2 rounded-md"
-                    type="text"
-                    name=""
-                    placeholder="Mobile Number"
-                    id=""
-                  />
-                </div>
-              </div>
-              <button
-                onClick={handleBookNow}
-                className="bg-[#FF5522] font-bold py-3 text-white w-full"
-              >
-                Book Now
-              </button>
+                <button
+                  type="button"
+                  onClick={handleBookNow}
+                  className="bg-[#FF5522] font-bold py-3 text-white w-full"
+                >
+                  Book Now
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -249,27 +310,6 @@ const PackageDetails = () => {
           ))}
         </div>
 
-        {/* Popup for booking success*/}
-        {showPopup && (
-          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
-            <div className="bg-white p-8 rounded-lg">
-              <p className="text-2xl font-bold text-[#6C7171] mb-4">
-                Booking Successful!
-              </p>
-              <p className="text-lg text-[#6C7171]">
-                Thank you for booking with us.
-              </p>
-              <button
-                onClick={closePopup}
-                className="mt-4 bg-[#FF5522] text-white font-bold py-2 px-4 rounded"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
-        {/* Popup for not logged in */}
-
         {showNotLoggedInPopup && (
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
             <div className="bg-white p-8 rounded-lg">
@@ -280,21 +320,21 @@ const PackageDetails = () => {
                 Please login to proceed with the booking.
               </p>
               <div className="flex justify-between">
-              <button
-                onClick={() => {
-                  setShowNotLoggedInPopup(false);
-                  navigate("/login");
-                }}
-                className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => setShowNotLoggedInPopup(false)}
-                className="mt-4 bg-red-500 text-white font-bold py-2 px-4 rounded"
-              >
-                Cancel
-              </button>
+                <button
+                  onClick={() => {
+                    setShowNotLoggedInPopup(false);
+                    navigate("/login");
+                  }}
+                  className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => setShowNotLoggedInPopup(false)}
+                  className="mt-4 bg-red-500 text-white font-bold py-2 px-4 rounded"
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           </div>

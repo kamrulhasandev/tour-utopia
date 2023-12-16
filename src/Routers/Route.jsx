@@ -26,6 +26,8 @@ import AddBlogs from "../Components/Dashboard/Blogs/addBlogs/AddBlogs";
 import EditPackage from "../Components/Dashboard/Packages/editPackage/EditPackage";
 import EditNews from "../Components/Dashboard/News/editNews/EditNews";
 import EditBlog from "../Components/Dashboard/Blogs/editBlog/editBlog";
+import Success from './../Pages/Payment/Success';
+import Cancel from './../Pages/Payment/Cancel';
 
 const router = createBrowserRouter([
   {
@@ -84,6 +86,14 @@ const router = createBrowserRouter([
       {
         path: "/myBooked",
         element: <MyBooked />,
+      },
+      {
+        path: "/success",
+        element: <Success />,
+      },
+      {
+        path: "/cancel",
+        element: <Cancel />,
       },
     ],
   },
