@@ -93,11 +93,11 @@ const router = createBrowserRouter([
         element: <MyBooked />,
       },
       {
-        path: "/success",
+        path: "payment/success/:tranId",
         element: <Success />,
       },
       {
-        path: "/cancel",
+        path: "payment/fail/:tranId",
         element: <Cancel />,
       },
     ],

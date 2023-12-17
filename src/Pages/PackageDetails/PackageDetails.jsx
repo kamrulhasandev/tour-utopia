@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaClock, FaStar, FaLongArrowAltRight } from "react-icons/fa";
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 
 const PackageDetails = () => {
   const [data, setData] = useState([]);
@@ -44,65 +44,89 @@ const PackageDetails = () => {
     (item) => item.location === matchingResults?.location
   );
 
+  const paymentData = {
+    tourId: matchingResults?.id,
+    tourCategory: matchingResults?.category,
+    tourName: matchingResults?.name,
+    price: matchingResults?.price,
+    userName: bookingForm.name,
+    userEmail: bookingForm.email,
+    phoneNo: bookingForm.phoneNumber,
+  };
+  console.log(paymentData);
+
+  const handleOrder = async () => {
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(paymentData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        window.location.replace(result.url)
+        console.log(result);
+      });
+  };
+
   // payment---------------------------------
 
-  const handleBookNow = async () => {
-    // Check if the user is logged in
-    if (!user?.email) {
-      // Redirect to the login page
-      navigate("/login");
-      return;
-    }
+  // const handleBookNow = async () => {
+  //   // Check if the user is logged in
+  //   if (!user?.email) {
+  //     // Redirect to the login page
+  //     navigate("/login");
+  //     return;
+  //   }
 
-    // Check if required form fields are filled
-    if (!bookingForm.name || !bookingForm.email || !bookingForm.phoneNumber) {
-      alert("Please fill out the form");
-      return;
-    }
+  //   // Check if required form fields are filled
+  //   if (!bookingForm.name || !bookingForm.email || !bookingForm.phoneNumber) {
+  //     alert("Please fill out the form");
+  //     return;
+  //   }
 
-    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
+  //   const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
 
-    // Assuming matchingResults is defined in your frontend
-    const matchingResult = matchingResults;
+  //   // Assuming matchingResults is defined in your frontend
+  //   const matchingResult = matchingResults;
 
-    try {
-      const response = await fetch(
-        "http://localhost:5000/create-checkout-session",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            matchingResult,
-            userEmail: bookingForm.name,
-            userName: bookingForm.email,
-            userPhoneNo: bookingForm.phoneNumber,
-          }),
-        }
-      );
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:5000/create-checkout-session",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           matchingResult,
+  //           userEmail: bookingForm.name,
+  //           userName: bookingForm.email,
+  //           userPhoneNo: bookingForm.phoneNumber,
+  //         }),
+  //       }
+  //     );
 
-      if (response.ok) {
-        const session = await response.json();
+  //     if (response.ok) {
+  //       const session = await response.json();
 
-        // Redirect the user to the Stripe Checkout page with only the sessionId
-        const result = await stripe.redirectToCheckout({
-          sessionId: session.id,
-        });
+  //       // Redirect the user to the Stripe Checkout page with only the sessionId
+  //       const result = await stripe.redirectToCheckout({
+  //         sessionId: session.id,
+  //       });
 
-        if (result.error) {
-          // Handle errors
-          console.error(result.error.message);
-        }
-      } else {
-        // Handle errors with the server response
-        console.error("Server error:", response.status, response.statusText);
-      }
-    } catch (error) {
-      // Handle network errors
-      console.error("Network error:", error.message);
-    }
-  };
+  //       if (result.error) {
+  //         // Handle errors
+  //         console.error(result.error.message);
+  //       }
+  //     } else {
+  //       // Handle errors with the server response
+  //       console.error("Server error:", response.status, response.statusText);
+  //     }
+  //   } catch (error) {
+  //     // Handle network errors
+  //     console.error("Network error:", error.message);
+  //   }
+  // };
 
   return (
     <div className="">
@@ -221,8 +245,8 @@ const PackageDetails = () => {
                   </div>
                 </div>
                 <button
+                  onClick={handleOrder}
                   type="button"
-                  onClick={handleBookNow}
                   className="bg-[#FF5522] font-bold py-3 text-white w-full"
                 >
                   Book Now

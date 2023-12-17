@@ -16,7 +16,7 @@ const Saved = () => {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
   return (
-    <div className="py-[80px] mt-20 container mx-auto px-5 md:px-0">
+    <div className="py-[80px] min-h-[calc(100vh-300px)] mt-20 container mx-auto px-5 md:px-0">
       <h1 className="text-center text-2xl font-bold">My Favorites</h1>
       <hr className="my-10" />
       {filterItem.length === 0 && (
