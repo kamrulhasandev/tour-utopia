@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 const AddPackage = () => {
   const [formData, setFormData] = useState({
     name: "",
-    price: "",
+    price: Number(0),
     location: "",
     division: "",
     coverImage: "",

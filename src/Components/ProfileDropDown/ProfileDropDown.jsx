@@ -38,8 +38,8 @@ const ProfileDropDown = () => {
     <div className="   ">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md   text-sm font-medium text-white  ">
-            <img src="./avater.png" className="h-10 w-10" alt="" />
+          <Menu.Button className="inline-flex w-full justify-center rounded-md   text-sm font-medium text-[#FF5522]  ">
+            <div><FaUser size={24}/></div>
           </Menu.Button>
         </div>
         <Transition

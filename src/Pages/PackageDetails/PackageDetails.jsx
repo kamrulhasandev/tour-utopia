@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { FaClock, FaStar, FaLongArrowAltRight } from "react-icons/fa";
+import { FaClock, FaStar } from "react-icons/fa";
 // import { loadStripe } from "@stripe/stripe-js";
 
 const PackageDetails = () => {
@@ -27,7 +27,7 @@ const PackageDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data.json");
+        const response = await fetch("http://localhost:5000/packages");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -38,17 +38,17 @@ const PackageDetails = () => {
     fetchData();
   }, []);
 
-  const matchingResults = data.find((item) => item.id == id); // todo: set mongodb _id
+  const matchingResults = data.find((item) => item._id == id); // todo: set mongodb _id
   console.log(matchingResults);
   const popularTour = data.filter(
-    (item) => item.location === matchingResults?.location
+    (item) => item.division === matchingResults?.division
   );
 
   const paymentData = {
-    tourId: matchingResults?.id,
-    tourCategory: matchingResults?.category,
+    tourId: matchingResults?._id,
+    tourLocation: matchingResults?.location,
     tourName: matchingResults?.name,
-    price: matchingResults?.price,
+    price: Number(matchingResults?.price),
     userName: bookingForm.name,
     userEmail: bookingForm.email,
     phoneNo: bookingForm.phoneNumber,
@@ -132,12 +132,12 @@ const PackageDetails = () => {
     <div className="">
       <div
         style={{
-          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0) 100%), url(${matchingResults?.image})`,
+          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0) 100%), url(${matchingResults?.coverImage})`,
         }}
         className="w-full bg-center bg-cover  h-[30vh] flex justify-center items-center flex-col pt-[64px]"
       >
         <h5 className="text-white text-2xl font-bold">
-          {matchingResults?.location}
+          {matchingResults?.division}
         </h5>
         <hp className="text-white text-2xl">{matchingResults?.name}</hp>
       </div>
@@ -145,12 +145,7 @@ const PackageDetails = () => {
         <div className=" md:flex justify-between gap-10">
           <div className="md:w-3/5">
             <div>
-              <img src={matchingResults?.image} alt="" />
-              <div className="flex justify-between py-5 overflow-x-auto md:overflow-x-hidden gap-1">
-                {matchingResults?.gallery?.map((item, index) => (
-                  <img key={index} src={item} className="w-36" />
-                ))}
-              </div>
+              <img src={matchingResults?.coverImage} alt="" />
             </div>
             <div className="flex flex-col gap-5">
               <div className="flex gap-10 items-center">
@@ -161,7 +156,7 @@ const PackageDetails = () => {
                   <FaStar className="text-yellow-400" />
                   4.9
                 </p>
-                <p className="text-[#6C7171]">{matchingResults?.category}</p>
+                <p className="text-[#6C7171]">{matchingResults?.division}</p>
               </div>
               <h1 className="text-5xl font-bold text-[#6C7171]">
                 {matchingResults?.name}
@@ -169,7 +164,7 @@ const PackageDetails = () => {
               <div>
                 <p className="flex items-center gap-1 uppercase">
                   <FaClock className="text-[#FF5522]" />{" "}
-                  {matchingResults?.duration}
+                  {matchingResults?.duration} hours
                 </p>
               </div>
               <div>
@@ -177,7 +172,7 @@ const PackageDetails = () => {
                   Tour Details
                 </h6>
                 <p className="text-lg text-[#6C7171]">
-                  {matchingResults?.details}
+                  {matchingResults?.content}
                 </p>
               </div>
             </div>
@@ -185,11 +180,7 @@ const PackageDetails = () => {
           <div className="md:w-2/5">
             <div className="shadow-2xl">
               <div className="flex items-center gap-3 bg-[#FF5522] text-white p-5">
-                <small>
-                  Start
-                  <br />
-                  From
-                </small>
+                
                 <h4 className="text-3xl font-bold">
                   BDT {matchingResults?.price}{" "}
                   <span className="text-base"> / Per Person</span>
@@ -255,44 +246,24 @@ const PackageDetails = () => {
             </div>
           </div>
         </div>
-        {/* extra details  */}
-        <div className="pt-10">
-          <h5 className="text-[#6C7171] text-xl font-bold">HighLights</h5>
-          <ul className="flex flex-col gap-2 py-2">
-            {matchingResults?.highlights?.map((item, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <FaLongArrowAltRight className="text-[#FF5522]" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="pt-10">
-          <h5 className="text-[#6C7171] text-xl font-bold">Recommendation</h5>
-          <ul className="flex flex-col gap-2 py-2">
-            {matchingResults?.recommendedGear?.map((item, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <FaLongArrowAltRight className="text-[#FF5522]" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {/* Popular tour  */}
 
         <div className="pt-20 pb-5">
           <h3 className="text-4xl font-bold">
-            Popular Tour in {popularTour[0]?.location}
+            Popular Tour in {popularTour[0]?.division}
           </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
           {popularTour.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-2xl">
-              <Link to={`/package/${item.id}`}>
+              <Link to={`/package/${item._id}`}>
                 <div className="image-container rounded-t-2xl">
-                  <img className="rounded-t-2xl" src={item.image} alt="" />
+                <img
+                    className="rounded-t-2xl h-48 w-full object-cover"
+                    src={item.coverImage}
+                    alt=""
+                  />
                   <div className="overlay"></div>
                 </div>
                 <div className="p-5">
@@ -307,11 +278,12 @@ const PackageDetails = () => {
                       <p className="flex  items-center gap-1">
                         <FaClock className="text-[#FF5522]" size={15} />
                         <span className="text-[#6C7171] font-bold uppercase">
-                          {item.duration}
+                          {item.duration} hours
                         </span>
+                        
                       </p>
                       <p className="text-[#FF5522] font-bold">
-                        {item.category}
+                        {item.division}
                       </p>
                     </div>
                   </div>

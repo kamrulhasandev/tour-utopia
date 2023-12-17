@@ -37,7 +37,7 @@ const Destination = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data.json");
+        const response = await fetch("http://localhost:5000/packages");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -83,11 +83,15 @@ const Destination = () => {
               <div>
                 <div className="image-container rounded-t-2xl">
                   <div className="relative">
-                    <img className="rounded-t-2xl" src={item.image} alt="" />
+                  <img
+                    className="rounded-t-2xl h-48 w-full object-cover"
+                    src={item.coverImage}
+                    alt=""
+                  />
                     <FaHeart
                       onClick={() => toggleFavorite(item)}
                       className={`absolute top-3 cursor-pointer right-4 text-[20px] ${
-                        favorites.some((favItem) => favItem.id === item.id)
+                        favorites.some((favItem) => favItem._id === item._id)
                           ? "text-red-500"
                           : "text-white"
                       }`}
@@ -107,11 +111,11 @@ const Destination = () => {
                       <p className="flex  items-center gap-1">
                         <FaClock className="text-[#FF5522]" size={15} />
                         <span className="text-[#6C7171] font-bold uppercase">
-                          {item.duration}
+                          {item.duration} hours
                         </span>
                       </p>
                       <p className="text-[#FF5522] font-bold">
-                        {item.category}
+                        {item.division}
                       </p>
                     </div>
                   </div>
@@ -127,7 +131,7 @@ const Destination = () => {
                         ${item.price}
                       </span>
                     </p>
-                    <Link to={`/package/${item.id}`}>
+                    <Link to={`/package/${item._id}`}>
                       <FaArrowRight className="text-[#FF5522] font-bold" />
                     </Link>
                   </div>
