@@ -85,19 +85,6 @@ const ProfileDropDown = () => {
                 </div>
               ) : (
                 <div className="px-1 py-1 ">
-              
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-[#FF5522] text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}
-                  >
-                    <FaUser />
-                    Profile
-                  </button>
-                )}
-              </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
                   <Link to={'/myBooked'}>
