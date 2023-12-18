@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
@@ -8,7 +8,7 @@ const SignUp = () => {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const {createUser,updateName} = useContext(AuthContext)
+  const { createUser } = useContext(AuthContext);
   const togglePasswordVisibility = () => {
     setPasswordVisible((prevVisible) => !prevVisible);
   };
@@ -36,7 +36,14 @@ const SignUp = () => {
       createUser(email, password)
         .then((result) => {
           const user = result.user;
-          updateName(user,name)
+          const saveUser = { name: name, email: email, role: 'user' };
+          fetch("https://tour-utopia.vercel.app/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          });
           console.log(user);
           navigate("/");
         })

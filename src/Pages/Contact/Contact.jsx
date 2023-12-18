@@ -1,6 +1,30 @@
 import { FaEnvelope, FaLocationArrow, FaPhone } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 
 const Contact = () => {
+   const form = useRef();
+ const handleSubmit = (e) => {
+   e.preventDefault();
+   emailjs
+     .sendForm(
+       "service_we58kv4",
+       "template_00qsxhk",
+       form.current,
+       "3XEVb64ek0BoB1JEE"
+     )
+     .then(
+       (result) => {
+         console.log(result);
+         alert("message sent")
+       },
+       (error) => {
+         console.log(error);
+       }
+     );
+ };
+
+
   return (
     <div>
       <div
@@ -49,22 +73,22 @@ const Contact = () => {
               Send Us A Message
             </h3>
             <div>
-              <form className="space-y-6">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                 <div className="md:flex gap-10 justify-between">
                   <input
                     type="text"
-                    id="fullName"
-                    name="fullName"
+                    id="name"
+                    name="from_name"
                     placeholder="Your Name"
                     className="border p-2 w-full outline-none mb-5 md:mb-0"
                     required
                   />
                   <input
                     type="email"
-                    id="email"
-                    name="email"
+                    name="from_email"
                     placeholder="Your Email"
                     className="border p-2 w-full outline-none"
+                    id="email"
                     required
                   />
                 </div>
@@ -72,17 +96,17 @@ const Contact = () => {
                 <div className="md:flex gap-10 justify-between">
                   <input
                     type="text"
-                    id="fullName"
-                    name="fullName"
+                    id="from_phone"
+                    name="from_phone"
                     placeholder="Your Phone"
                     className="border p-2 w-full outline-none mb-5 md:mb-0"
                     required
                   />
 
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
+                    type="text"
+                    id="from_subject"
+                    name="from_subject"
                     placeholder="Subject"
                     className="border p-2 w-full outline-none"
                     required
@@ -98,7 +122,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="bg-[#FF5522] w-1/2 text-white p-2 rounded"
+                  className="bg-[#FF5522] w-full text-white p-2 rounded"
                 >
                   Submit
                 </button>

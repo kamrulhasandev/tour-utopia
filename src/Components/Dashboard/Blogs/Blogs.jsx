@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import AddBlogs from "./addBlogs/AddBlogs";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const itemsPerPage = 5;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyBlogs.json");
+        const response = await fetch("https://tour-utopia.vercel.app/blogs");
         const data = await response.json();
         setBlogs(data);
       } catch (error) {
@@ -45,12 +45,52 @@ const Blogs = () => {
     setCurrentPage(selected);
   };
 
-  const handleAddBlogClick = () => {
-    setIsModalOpen(true);
-  };
+  const handleDelete = (blogId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(
+            `https://tour-utopia.vercel.app/blogs/${blogId}`,
+            {
+              method: "DELETE",
+            }
+          );
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
+          if (response.ok) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your blog has been deleted.",
+              icon: "success",
+            });
+
+            // Update the state or refetch the data after deletion
+            const updatedBlogs = blogs.filter((blog) => blog._id !== blogId);
+            setBlogs(updatedBlogs);
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: "Failed to delete the blog.",
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting blog:", error);
+          Swal.fire({
+            title: "Error",
+            text: "An error occurred while deleting the blog.",
+            icon: "error",
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -64,25 +104,12 @@ const Blogs = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button
-          className="bg-green-500 py-2 px-2 rounded-lg text-white"
-          onClick={handleAddBlogClick}
-        >
-          Add News
-        </button>
+        <Link to={"/dashboard/blogs/addBlog"}>
+          <button className="bg-green-500 py-2 px-2 rounded-lg text-white">
+            Add Blog
+          </button>
+        </Link>
       </div>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className=" bg-white">
-            <AddBlogs
-              handleAddNewsClick={handleAddBlogClick}
-              handleModalClose={handleModalClose}
-            />
-          </div>
-        </div>
-      )}
 
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border rounded-lg shadow-md text-sm">
@@ -107,7 +134,7 @@ const Blogs = () => {
                 </td>
                 <td className="py-2 px-4 sm:table-cell">
                   <img
-                    src={blog?.image}
+                    src={blog?.coverImage}
                     alt={blog?.name}
                     className="w-16 h-16 object-cover rounded-full"
                   />
@@ -116,10 +143,15 @@ const Blogs = () => {
                 <td className="py-2 px-4 sm:table-cell">{blog?.author}</td>
 
                 <td className="py-2  flex gap-1  px-4 ">
-                  <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
-                    Edit
-                  </button>
-                  <button className="bg-red-500 px-2 text-white py-1 text-xs rounded-full ">
+                  <Link to={`/dashboard/blogs/edit/${blog?._id}`}>
+                    <button className="bg-green-500 px-2 text-white py-1 text-xs rounded-full ">
+                      Edit
+                    </button>
+                  </Link>
+                  <button
+                    className="bg-red-500 px-2 text-white py-1 text-xs rounded-full "
+                    onClick={() => handleDelete(blog?._id)}
+                  >
                     Delete
                   </button>
                 </td>

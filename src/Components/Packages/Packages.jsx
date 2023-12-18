@@ -8,7 +8,7 @@ const Packages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data.json");
+        const response = await fetch("https://tour-utopia.vercel.app/packages");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -33,15 +33,19 @@ const Packages = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
           {randomDataSubset.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-2xl">
-              <Link to={`/package/${item.id}`}>
+              <Link to={`/package/${item._id}`}>
                 <div className="image-container rounded-t-2xl">
-                  <img className="rounded-t-2xl" src={item.image} alt="" />
+                  <img
+                    className="rounded-t-2xl h-48 w-full object-cover"
+                    src={item.coverImage}
+                    alt=""
+                  />
                   <div className="overlay"></div>
                 </div>
                 <div className="p-5">
                   <div className="flex flex-col gap-3">
                     <p className="text-[#FF5522] font-bold text-lg">
-                      {item.location}
+                      {item.division}
                     </p>
                     <h6 className="text-xl font-semibold text-[#6C7171]">
                       {item.name}
@@ -50,7 +54,7 @@ const Packages = () => {
                       <p className="flex  items-center gap-1">
                         <FaClock className="text-[#FF5522]" size={15} />
                         <span className="text-[#6C7171] font-bold uppercase">
-                          {item.duration}
+                          {item.duration} hours
                         </span>
                       </p>
                       <p className="text-[#FF5522] font-bold">
@@ -65,9 +69,9 @@ const Packages = () => {
                       <span className="text-[#6C7171]">4.9</span>
                     </p>
                     <p className="text-[#6C7171]">
-                      Start From:{" "}
+                      Price:{" "}
                       <span className="text-[#FF5522] font-bold">
-                        ${item.price}
+                        {item.price}/ TK
                       </span>
                     </p>
                   </div>

@@ -1,60 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Users = () => {
+  const [users, setUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState(null);
-  const users = [
-    {
-        name: "John Doe",
-        email: "john.doe@example.com",
-        role: "Admin",
-      },
-      {
-        name: "Jane Smith",
-        email: "jane.smith@example.com",
-        role: "User",
-      },
-      {
-        name: "Alice Johnson",
-        email: "alice.johnson@example.com",
-        role: "User",
-      },
-      {
-        name: "Bob Williams",
-        email: "bob.williams@example.com",
-        role: "Admin",
-      },
-      {
-        name: "Eva Davis",
-        email: "eva.davis@example.com",
-        role: "User",
-      },
-      {
-        name: "Michael Brown",
-        email: "michael.brown@example.com",
-        role: "User",
-      },
-      {
-        name: "Olivia Miller",
-        email: "olivia.miller@example.com",
-        role: "Admin",
-      },
-      {
-        name: "Daniel Wilson",
-        email: "daniel.wilson@example.com",
-        role: "User",
-      },
-      {
-        name: "Sophia White",
-        email: "sophia.white@example.com",
-        role: "User",
-      },
-      {
-        name: "Liam Harris",
-        email: "liam.harris@example.com",
-        role: "Admin",
-      },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://tour-utopia.vercel.app/users");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchQuery.toLowerCase())
   );

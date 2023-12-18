@@ -9,7 +9,7 @@ const About = () => {
         style={{
           backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url('./banner1.jpg')`,
         }}
-        className="w-full bg-center bg-cover h-64 flex justify-center items-center pt-[64px]" // Adjust the height as needed
+        className="w-full bg-center bg-cover h-64 flex justify-center items-center pt-[64px]"
       >
         <h3 className="text-white text-3xl md:text-5xl font-bold">About US</h3>
       </div>
@@ -82,9 +82,9 @@ const About = () => {
           </div>
         </div>
       </div>
-      
-        <AboutMission />
-        <OurSpeciality/>
+
+      <AboutMission />
+      <OurSpeciality />
     </div>
   );
 };
