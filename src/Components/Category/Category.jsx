@@ -24,7 +24,7 @@ const Category = () => {
           {category.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col items-center gap-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(233,138,109,0.50)] py-5 rounded-md border-2 border-transparent hover:border-[#FF5522] transition-all hover:cursor-pointer"
+              className="flex flex-col items-center gap-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(233,138,109,0.50)] py-5 rounded-md border-2 border-transparent hover:border-[#FF5522] transition-all "
             >
               <img className="h-10 w-10" src={item.image} alt="" />
               <p className="font-bold">{item.name}</p>

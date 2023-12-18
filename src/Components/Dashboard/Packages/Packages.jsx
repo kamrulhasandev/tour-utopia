@@ -14,7 +14,7 @@ const Packages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/packages");
+        const response = await fetch("https://tour-utopia.vercel.app/packages");
         const data = await response.json();
         setPackages(data);
       } catch (error) {
@@ -59,7 +59,7 @@ const Packages = () => {
       if (result.isConfirmed) {
         try {
           const response = await fetch(
-            `http://localhost:5000/packages/${tourPackageId}`,
+            `https://tour-utopia.vercel.app/packages/${tourPackageId}`,
             {
               method: "DELETE",
             }

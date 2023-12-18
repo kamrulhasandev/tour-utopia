@@ -16,7 +16,7 @@ const EditNews = () => {
   useEffect(() => {
     const fetchNewsDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/news/${newsId}`);
+        const response = await fetch(`https://tour-utopia.vercel.app/news/${newsId}`);
         const data = await response.json();
         setFormData(data);
       } catch (error) {
@@ -38,7 +38,7 @@ const EditNews = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/news/${newsId}`, {
+      const response = await fetch(`https://tour-utopia.vercel.app/news/${newsId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

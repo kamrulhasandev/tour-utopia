@@ -8,13 +8,13 @@ const ReviewModal = ({ booking, onClose }) => {
 
   const sendReview = async () => {
     try {
-      const response = await fetch("http://localhost:5000/reviews", {
+      const response = await fetch("https://tour-utopia.vercel.app/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          bookingId: booking?.orderDetails?.tourId,
+          bookingId: booking?.matchingResultId,
           userName: userName, 
           reviewText: reviewText,
         }),

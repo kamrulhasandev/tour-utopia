@@ -19,7 +19,7 @@ const EditPackage = () => {
     const fetchPackageDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/packages/${packageId}`
+          `https://tour-utopia.vercel.app/packages/${packageId}`
         );
         const data = await response.json();
         setPackageDetails(data);
@@ -43,7 +43,7 @@ const EditPackage = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/packages/${packageId}`,
+        `https://tour-utopia.vercel.app/packages/${packageId}`,
         {
           method: "PATCH",
           headers: {

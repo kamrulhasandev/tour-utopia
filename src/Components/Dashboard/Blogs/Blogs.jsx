@@ -13,7 +13,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/blogs");
+        const response = await fetch("https://tour-utopia.vercel.app/blogs");
         const data = await response.json();
         setBlogs(data);
       } catch (error) {
@@ -58,7 +58,7 @@ const Blogs = () => {
       if (result.isConfirmed) {
         try {
           const response = await fetch(
-            `http://localhost:5000/blogs/${blogId}`,
+            `https://tour-utopia.vercel.app/blogs/${blogId}`,
             {
               method: "DELETE",
             }

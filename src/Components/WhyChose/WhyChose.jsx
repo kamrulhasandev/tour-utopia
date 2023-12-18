@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const WhyChose = () => {
   return (
@@ -67,7 +68,8 @@ const WhyChose = () => {
                 </p>
               </div>
             </div>
-            <button className="bg-[#FF5522] w-36 font-semibold py-2 rounded-md text-white mt-2">Explore More</button>
+            <Link to={'/destination'}>
+            <button className="bg-[#FF5522] w-36 font-semibold py-2 rounded-md text-white mt-2">Explore More</button></Link>
           </div>
           
         </div>

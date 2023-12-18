@@ -15,7 +15,7 @@ const BlogDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyBlogs.json");
+        const response = await fetch("https://tour-utopia.vercel.app/blogs");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -27,7 +27,7 @@ const BlogDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyBlogs.json");
+        const response = await fetch("https://tour-utopia.vercel.app/blogs");
         const result = await response.json();
         setBlog(result);
       } catch (error) {
@@ -38,13 +38,13 @@ const BlogDetails = () => {
     fetchData();
   }, []);
   console.log(data);
-  const singleData = data.find((item) => item.id === id);
+  const singleData = data.find((item) => item._id === id);
   console.log(singleData);
   return (
     <div>
       <div
         style={{
-          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url(${singleData?.image})`,
+          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url(${singleData?.coverImage})`,
         }}
         className="w-full bg-center bg-cover h-72 flex justify-center items-center pt-[64px]" // Adjust the height as needed
       >
@@ -62,17 +62,13 @@ const BlogDetails = () => {
           {singleData?.date}
         </p>
         <img
-          src={singleData?.image}
+          src={singleData?.coverImage}
           className="w-full md:w-3/4 object-cover mx-auto h-1/2 md:h-screen"
           alt=""
         />
         <div className="md:flex justify-between border-y-[1px] border-[#494848] py-6">
           <div className="flex gap-6 text-center md:text-left items-center">
-            <img
-              className="h-16 w-16 rounded-full shadow-lg"
-              src={singleData?.authorImage}
-              alt=""
-            />
+            
             <div>
               <p className="text-[#494848] ">Written By</p>
               <p className="text-2xl font-bold mt-2 text-orange-700">
@@ -95,11 +91,11 @@ const BlogDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
           {blog.slice(0, 4).map((item) => (
             <div key={item.id} className="shadow-2xl rounded-2xl">
-              <Link to={`/blog/${item.id}`}>
+              <Link to={`/blog/${item._id}`}>
                 <div className="overflow-hidden rounded-t-2xl">
                   <img
                     className="rounded-t-2xl h-[500px] w-full object-cover hover:scale-150 duration-700 transition-all"
-                    src={item.image}
+                    src={item.coverImage}
                     alt=""
                   />
                 </div>

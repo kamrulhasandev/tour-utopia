@@ -8,7 +8,7 @@ const Packages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/packages");
+        const response = await fetch("https://tour-utopia.vercel.app/packages");
         const result = await response.json();
         setData(result);
       } catch (error) {

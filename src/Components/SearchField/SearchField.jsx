@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 
 const SearchField = () => {
   const [formData, setFormData] = useState({
-    destination: "",
-    activity: "",
-    date: "",
-    guests: 1,
+    destination: ""
   });
   const handleInputChange = (e) => {
     setFormData({

@@ -5,7 +5,7 @@ import ReviewModal from "../../Components/ReviewModal/ReviewModal";
 
 const MyBooked = () => {
   const { user } = useContext(AuthContext);
-  const [bookings, setBooking] = useState([]);
+  const [bookings, setBookings] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState(null);
 
@@ -13,11 +13,10 @@ const MyBooked = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/orders/${user?.email}`
+          `https://tour-utopia.vercel.app/orders/${user?.email}`
         );
         const result = await response.json();
-        console.log(result);
-        setBooking(result);
+        setBookings(result);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -62,22 +61,22 @@ const MyBooked = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(bookings) &&
+            {bookings.length > 0 ? (
               bookings.map((booking, index) => (
                 <tr key={index}>
                   <td className="py-2 px-4">{index + 1}</td>
                   <td className="py-2 px-4 sm:table-cell">
-                    {booking?.orderDetails?.tourName}
+                    {booking.productName}
+                  </td>
+                  <td className="py-2 px-4 sm:table-cell">{booking.price}</td>
+                  <td className="py-2 px-4 sm:table-cell">
+                    {booking.transactionId?.slice(0, 26)}
                   </td>
                   <td className="py-2 px-4 sm:table-cell">
-                    {booking?.orderDetails?.price}
-                  </td>
-                  <td className="py-2 px-4 sm:table-cell">{booking?.tranId}</td>
-                  <td className="py-2 px-4 sm:table-cell">
-                    {booking?.orderDetails?.userEmail}
+                    {booking.userEmail}
                   </td>
                   <td className="py-2 px-4 sm:table-cell">
-                    {booking?.orderDetails?.phoneNo}
+                    {booking.userPhoneNo}
                   </td>
                   <td className="py-2 px-4 sm:table-cell">
                     <button
@@ -88,7 +87,14 @@ const MyBooked = () => {
                     </button>
                   </td>
                 </tr>
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="py-2 px-4 text-center">
+                  No bookings found.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
         {isModalOpen && (

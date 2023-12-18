@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaClock, FaStar } from "react-icons/fa";
-// import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 const PackageDetails = () => {
   const [data, setData] = useState([]);
@@ -27,7 +27,7 @@ const PackageDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/packages");
+        const response = await fetch("https://tour-utopia.vercel.app/packages");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -38,95 +38,71 @@ const PackageDetails = () => {
     fetchData();
   }, []);
 
-  const matchingResults = data.find((item) => item._id == id); // todo: set mongodb _id
+  const matchingResults = data.find((item) => item._id == id);
   console.log(matchingResults);
   const popularTour = data.filter(
     (item) => item.division === matchingResults?.division
   );
 
-  const paymentData = {
-    tourId: matchingResults?._id,
-    tourLocation: matchingResults?.location,
-    tourName: matchingResults?.name,
-    price: Number(matchingResults?.price),
-    userName: bookingForm.name,
-    userEmail: bookingForm.email,
-    phoneNo: bookingForm.phoneNumber,
+  //payment---------------------------------
+
+  const handleBookNow = async () => {
+    // Check if the user is logged in
+    if (!user?.email) {
+      // Redirect to the login page
+      navigate("/login");
+      return;
+    }
+
+    // Check if required form fields are filled
+    if (!bookingForm.name || !bookingForm.email || !bookingForm.phoneNumber) {
+      alert("Please fill out the form");
+      return;
+    }
+
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
+
+    // Assuming matchingResults is defined in your frontend
+    const matchingResult = matchingResults;
+
+    try {
+      const response = await fetch(
+        "https://tour-utopia.vercel.app/create-checkout-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            matchingResult,
+            userEmail: bookingForm.email,
+            userName: bookingForm.name,
+            userPhoneNo: bookingForm.phoneNumber,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const session = await response.json();
+
+        // Redirect the user to the Stripe Checkout page with only the sessionId
+        const result = await stripe.redirectToCheckout({
+          sessionId: session.id,
+        });
+
+        if (result.error) {
+          // Handle errors
+          console.error(result.error.message);
+        }
+      } else {
+        // Handle errors with the server response
+        console.error("Server error:", response.status, response.statusText);
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error("Network error:", error.message);
+    }
   };
-  console.log(paymentData);
-
-  const handleOrder = async () => {
-    fetch("http://localhost:5000/order", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(paymentData),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        window.location.replace(result.url)
-        console.log(result);
-      });
-  };
-
-  // payment---------------------------------
-
-  // const handleBookNow = async () => {
-  //   // Check if the user is logged in
-  //   if (!user?.email) {
-  //     // Redirect to the login page
-  //     navigate("/login");
-  //     return;
-  //   }
-
-  //   // Check if required form fields are filled
-  //   if (!bookingForm.name || !bookingForm.email || !bookingForm.phoneNumber) {
-  //     alert("Please fill out the form");
-  //     return;
-  //   }
-
-  //   const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
-
-  //   // Assuming matchingResults is defined in your frontend
-  //   const matchingResult = matchingResults;
-
-  //   try {
-  //     const response = await fetch(
-  //       "http://localhost:5000/create-checkout-session",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           matchingResult,
-  //           userEmail: bookingForm.name,
-  //           userName: bookingForm.email,
-  //           userPhoneNo: bookingForm.phoneNumber,
-  //         }),
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       const session = await response.json();
-
-  //       // Redirect the user to the Stripe Checkout page with only the sessionId
-  //       const result = await stripe.redirectToCheckout({
-  //         sessionId: session.id,
-  //       });
-
-  //       if (result.error) {
-  //         // Handle errors
-  //         console.error(result.error.message);
-  //       }
-  //     } else {
-  //       // Handle errors with the server response
-  //       console.error("Server error:", response.status, response.statusText);
-  //     }
-  //   } catch (error) {
-  //     // Handle network errors
-  //     console.error("Network error:", error.message);
-  //   }
-  // };
 
   return (
     <div className="">
@@ -180,7 +156,6 @@ const PackageDetails = () => {
           <div className="md:w-2/5">
             <div className="shadow-2xl">
               <div className="flex items-center gap-3 bg-[#FF5522] text-white p-5">
-                
                 <h4 className="text-3xl font-bold">
                   BDT {matchingResults?.price}{" "}
                   <span className="text-base"> / Per Person</span>
@@ -236,7 +211,7 @@ const PackageDetails = () => {
                   </div>
                 </div>
                 <button
-                  onClick={handleOrder}
+                  onClick={handleBookNow}
                   type="button"
                   className="bg-[#FF5522] font-bold py-3 text-white w-full"
                 >
@@ -259,7 +234,7 @@ const PackageDetails = () => {
             <div key={index} className="bg-white shadow-lg rounded-2xl">
               <Link to={`/package/${item._id}`}>
                 <div className="image-container rounded-t-2xl">
-                <img
+                  <img
                     className="rounded-t-2xl h-48 w-full object-cover"
                     src={item.coverImage}
                     alt=""
@@ -280,7 +255,6 @@ const PackageDetails = () => {
                         <span className="text-[#6C7171] font-bold uppercase">
                           {item.duration} hours
                         </span>
-                        
                       </p>
                       <p className="text-[#FF5522] font-bold">
                         {item.division}

@@ -16,7 +16,7 @@ const EditBlog = () => {
   useEffect(() => {
     const fetchBlogDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/blogs/${blogId}`);
+        const response = await fetch(`https://tour-utopia.vercel.app/blogs/${blogId}`);
         const data = await response.json();
         setFormData(data);
       } catch (error) {
@@ -38,7 +38,7 @@ const EditBlog = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/blogs/${blogId}`, {
+      const response = await fetch(`https://tour-utopia.vercel.app/blogs/${blogId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

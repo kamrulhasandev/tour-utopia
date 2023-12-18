@@ -8,7 +8,7 @@ const NewsDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyNews.json");
+        const response = await fetch("https://tour-utopia.vercel.app/news");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -17,12 +17,12 @@ const NewsDetails = () => {
     };
     fetchData();
   }, [id]);
-  const singleData = data.find((item) => item.id === id);
+  const singleData = data.find((item) => item._id === id);
   return (
     <div>
       <div
         style={{
-          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url(${singleData?.image})`,
+          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url(${singleData?.coverImage})`,
         }}
         className="w-full bg-center bg-cover h-72 flex justify-center items-center pt-[64px]" // Adjust the height as needed
       >
@@ -41,12 +41,12 @@ const NewsDetails = () => {
           </div>
         </div>
         <img
-          className="h-1/2 md:h-screen w-3/4 mx-auto object-cover"
-          src={singleData?.image}
+          className="h-1/2 md:h-screen-[500px] w-3/4 mx-auto object-cover"
+          src={singleData?.coverImage}
           alt=""
         />
         <p className="text-[#6b6969] text-[22px] font-normal leading-10">
-          {singleData?.description}
+          {singleData?.content}
         </p>
       </div>
     </div>

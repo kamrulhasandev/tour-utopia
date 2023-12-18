@@ -13,7 +13,7 @@ const News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/news");
+        const response = await fetch("https://tour-utopia.vercel.app/news");
         const data = await response.json();
         setNews(data);
       } catch (error) {
@@ -58,7 +58,7 @@ const News = () => {
       if (result.isConfirmed) {
         try {
           const response = await fetch(
-            `http://localhost:5000/news/${articleId}`,
+            `https://tour-utopia.vercel.app/news/${articleId}`,
             {
               method: "DELETE",
             }

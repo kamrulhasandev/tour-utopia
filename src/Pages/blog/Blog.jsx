@@ -7,7 +7,7 @@ const Blog = () => {
      useEffect(() => {
        const fetchData = async () => {
          try {
-           const response = await fetch("/dummyBlogs.json");
+           const response = await fetch("https://tour-utopia.vercel.app/blogs");
            const result = await response.json();
            setData(result);
          } catch (error) {
@@ -29,12 +29,12 @@ const Blog = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 container px-5 md:px-0 mx-auto py-10">
         {data.map((item) => (
-          <div key={item.id} className="shadow-2xl rounded-2xl">
-            <Link to={`/blog/${item.id}`}>
+          <div key={item._id} className="shadow-2xl rounded-2xl">
+            <Link to={`/blog/${item._id}`}>
               <div className="overflow-hidden rounded-t-2xl">
                 <img
                   className="rounded-t-2xl h-[500px] w-full object-cover hover:scale-150 duration-700 transition-all"
-                  src={item.image}
+                  src={item.coverImage}
                   alt=""
                 />
               </div>

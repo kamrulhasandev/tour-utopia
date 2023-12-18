@@ -12,7 +12,7 @@ const ProfileDropDown = () => {
     const checkUserRole = async () => {
       // Fetch user role from the server
       const response = await fetch(
-        `http://localhost:5000/checkUserRole/${user?.email}`,
+        `https://tour-utopia.vercel.app/checkUserRole/${user?.email}`,
         {
           method: "GET",
           headers: {

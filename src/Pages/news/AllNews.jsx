@@ -6,7 +6,7 @@ const AllNews = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/dummyNews.json");
+        const response = await fetch("https://tour-utopia.vercel.app/news");
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -29,19 +29,19 @@ const AllNews = () => {
       <div className="container mx-auto px-5 md:px-0 grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10">
         {data.map((item) => (
           <Link
-            to={`/news/${item.id}`}
+            to={`/news/${item?._id}`}
             className="flex flex-col shadow-sm rounded-md p-5"
-            key={item.id}
+            key={item._id}
           >
             <div className="overflow-hidden">
               <img
-                src={item.image}
+                src={item?.coverImage}
                 className="w-full h-[220px] object-cover hover:scale-125 duration-300 transition-all"
                 alt=""
               />
             </div>
-            <p className="my-2 font-medium text-blue-600">{item.source}</p>
-            <h1 className="text-2xl flex-grow">{item.headline}</h1>
+            <p className="my-2 font-medium text-blue-600">{item?.source}</p>
+            <h1 className="text-2xl flex-grow">{item?.headline}</h1>
             <button className="bg-[#FF5522]  mt-3 flex justify-center py-3 px-6 rounded-md text-white hover:bg-[#ec7551] transition-all w-32">
               Read More
             </button>

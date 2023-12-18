@@ -25,7 +25,7 @@ const AddBlogs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/blogs", {
+      const response = await fetch("https://tour-utopia.vercel.app/blogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

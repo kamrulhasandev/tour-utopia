@@ -6,15 +6,14 @@ const Booked = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/orders");
+        const response = await fetch("https://tour-utopia.vercel.app/orders");
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log(data);
-
+        console.log(data); // Check the console to verify the structure of the data
         setBookings(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -44,11 +43,11 @@ const Booked = () => {
             {bookings.map((booking, index) => (
               <tr key={index}>
                 <td className="py-2 px-4">{index + 1}</td>
-                <td className="py-2 px-4 sm:table-cell">{booking?.orderDetails?.tourName}</td>
-                <td className="py-2 px-4 sm:table-cell">{booking?.orderDetails?.price}</td>
-                <td className="py-2 px-4 sm:table-cell">{booking?.orderDetails?.userName}</td>
-                <td className="py-2 px-4 sm:table-cell">{booking?.orderDetails?.userEmail}</td>
-                <td className="py-2 px-4 sm:table-cell">{booking?.orderDetails?.phoneNo}</td>
+                <td className="py-2 px-4 sm:table-cell">{booking.productName}</td>
+                <td className="py-2 px-4 sm:table-cell">{booking.price}</td>
+                <td className="py-2 px-4 sm:table-cell">{booking.userName}</td>
+                <td className="py-2 px-4 sm:table-cell">{booking.userEmail}</td>
+                <td className="py-2 px-4 sm:table-cell">{booking.userPhoneNo}</td>
               </tr>
             ))}
           </tbody>

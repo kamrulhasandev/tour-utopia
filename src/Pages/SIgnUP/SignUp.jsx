@@ -37,7 +37,7 @@ const SignUp = () => {
         .then((result) => {
           const user = result.user;
           const saveUser = { name: name, email: email, role: 'user' };
-          fetch("http://localhost:5000/users", {
+          fetch("https://tour-utopia.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
