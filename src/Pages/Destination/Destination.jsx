@@ -8,6 +8,7 @@ const Destination = () => {
   console.log(user?.email);
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+  const [isAdmin, setIsAdmin] = useState(null);
   const [favorites, setFavorites] = useState(
     JSON.parse(localStorage.getItem("favorites")) || []
   );
@@ -18,7 +19,7 @@ const Destination = () => {
     }
 
     const isFavorite = favorites.some(
-      (favCard) => favCard.id === card.id && favCard.user_email === user.email
+      (favCard) => favCard._id === card._id && favCard.user_email === user.email
     );
 
     const updatedCard = { ...card, user_email: user.email };
@@ -26,7 +27,7 @@ const Destination = () => {
     const updatedFavorites = isFavorite
       ? favorites.filter(
           (favCard) =>
-            favCard.id !== card.id || favCard.user_email !== user.email
+            favCard._id !== card._id || favCard.user_email !== user.email
         )
       : [...favorites, updatedCard];
 
@@ -50,6 +51,31 @@ const Destination = () => {
   const filteredCard = data.filter((item) =>
     item.location.toLowerCase().includes(search.toLowerCase())
   );
+   useEffect(() => {
+     const checkUserRole = async () => {
+       // Fetch user role from the server
+       const response = await fetch(
+         `https://tour-utopia.vercel.app/checkUserRole/${user?.email}`,
+         {
+           method: "GET",
+           headers: {
+             "Content-Type": "application/json",
+           },
+         }
+       );
+
+       if (!response.ok) {
+         console.error("Failed to fetch user role");
+         return;
+       }
+
+       const data = await response.json();
+       console.log(data.isAdmin);
+       setIsAdmin(data.isAdmin);
+     };
+
+     checkUserRole();
+   }, [user?.email]);
   return (
     <div className="">
       <div
@@ -83,19 +109,21 @@ const Destination = () => {
               <div>
                 <div className="image-container rounded-t-2xl">
                   <div className="relative">
-                  <img
-                    className="rounded-t-2xl h-48 w-full object-cover"
-                    src={item.coverImage}
-                    alt=""
-                  />
-                    <FaHeart
-                      onClick={() => toggleFavorite(item)}
-                      className={`absolute top-3 cursor-pointer right-4 text-[20px] ${
-                        favorites.some((favItem) => favItem._id === item._id)
-                          ? "text-red-500"
-                          : "text-white"
-                      }`}
+                    <img
+                      className="rounded-t-2xl h-48 w-full object-cover"
+                      src={item.coverImage}
+                      alt=""
                     />
+                    {user && !isAdmin && (
+                      <FaHeart
+                        onClick={() => toggleFavorite(item)}
+                        className={`absolute top-3 cursor-pointer right-4 text-[20px] ${
+                          favorites.some((favItem) => favItem._id === item._id)
+                            ? "text-red-500"
+                            : "text-white"
+                        }`}
+                      />
+                    )}
                   </div>
                   <div className="overlay"></div>
                 </div>

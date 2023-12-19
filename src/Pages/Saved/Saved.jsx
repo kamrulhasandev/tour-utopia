@@ -11,7 +11,7 @@ const Saved = () => {
   console.log(filterItem);
 
   const deleteFavorite = (id) => {
-    const updatedFavorites = favorites.filter((item) => item.id !== id);
+    const updatedFavorites = favorites.filter((item) => item._id !== id);
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
@@ -27,13 +27,17 @@ const Saved = () => {
       <div className="mt-10">
         {filterItem.map((item) => (
           <div key={item} className="grid grid-cols-6 gap-4 mt-3 shadow-sm p-3">
-            <img className="w-10 h-10 rounded-full" src={item.image} alt="" />
+            <img
+              className="w-10 h-10 rounded-full"
+              src={item.coverImage}
+              alt=""
+            />
             <p className="font-bold">{item.name}</p>
             <p className="font-bold">{item.location}</p>
             <p className="font-bold">{item.duration}</p>
             <p className="font-bold">{item.price}</p>
             <FaTrash
-              onClick={() => deleteFavorite(item.id)}
+              onClick={() => deleteFavorite(item._id)}
               className="text-red-700 cursor-pointer"
             />
           </div>

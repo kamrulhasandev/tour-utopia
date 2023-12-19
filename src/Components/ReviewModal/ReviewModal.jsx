@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ReviewModal = ({ booking, onClose }) => {
   const [reviewText, setReviewText] = useState("");
@@ -20,6 +21,7 @@ const ReviewModal = ({ booking, onClose }) => {
         }),
       });
       // Handle response as needed (e.g., show success message)
+      alert("FeedBack Sent")
       console.log("Review sent successfully");
     } catch (error) {
       console.error("Error sending review:", error);
