@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { FaArrowRight, FaClock, FaHeart, FaStar } from "react-icons/fa";
+import { FaArrowRight, FaClock, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
@@ -149,14 +149,14 @@ const Destination = () => {
                   </div>
                   <hr className="my-3" />
                   <div className="flex justify-between">
-                    <p className="flex items-center gap-1">
+                    {/* <p className="flex items-center gap-1">
                       <FaStar />
                       <span className="text-[#6C7171]">4.9</span>
-                    </p>
+                    </p> */}
                     <p className="text-[#6C7171]">
                       Start From:{" "}
                       <span className="text-[#FF5522] font-bold">
-                        ${item.price}
+                        {item.price}
                       </span>
                     </p>
                     <Link to={`/package/${item._id}`}>
