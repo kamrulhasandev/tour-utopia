@@ -8,11 +8,15 @@ const company = [
   {id: 4, name: 'Data Policy', url: '/'}
 ]
 const destination = [
-  {id: 1, name: 'Paris', url: '/Paris'},
-  {id: 2, name: 'Tokyo' , url: '/Tokyo'},
-  {id: 3, name: 'New York', url: '/New York'},
-  {id: 3, name: 'Kashmir', url: '/'},
-]
+  { id: 1, name: "Dhaka" },
+  { id: 2, name: "Chittagong"},
+  { id: 3, name: "Rajshahi" },
+  { id: 3, name: "Mymensingh"},
+  { id: 3, name: "Barishal" },
+  { id: 3, name: "Khulna" },
+  { id: 3, name: "Sylhet" },
+  { id: 3, name: "Rangpur"},
+];
 
 
 const Footer = () => {
@@ -21,7 +25,7 @@ const Footer = () => {
         <div className="max-w-screen-xl mx-auto px-5 text-[#c3c5c5] py-10">
           <div className="md:flex justify-between items-center">
             <div>
-              <h2 className="text-[#FF5522] text-2xl font-bold italic">Himalaya</h2>
+              <h2 className="text-[#FF5522] text-2xl font-bold italic">TOUR UTOPIA</h2>
               <div>
                 <small>Need any help</small>
                 <p>Call Us <span>01722222</span></p>
@@ -46,7 +50,7 @@ const Footer = () => {
             <p className="font-bold pb-2">Destinations</p>
                 <ul>
                   {
-                    destination.map((item) => <li className="hover:text-[#FF5522]" key={item.id}><Link to={item.url}>{item.name}</Link></li>)
+                    destination.map((item) => <li className="hover:text-[#FF5522]" key={item.id}><p>{item.name}</p></li>)
                   }
                 </ul>
             </div>
@@ -54,7 +58,7 @@ const Footer = () => {
               <p>Sing up Newsletter</p>
               <input className="p-2 rounded-md outline-none" type="email" name="" placeholder="Enter email" id="" />
               <button className="bg-[#FF5522] py-2 rounded-md">Submit</button>
-              <p>2023 Himalaya All Right Reserved.</p>
+              <p>2023 TOUR UTOPIA All Right Reserved.</p>
             </div>
           </div>
         </div>
