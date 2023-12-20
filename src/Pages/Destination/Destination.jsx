@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { FaArrowRight, FaClock, FaHeart } from "react-icons/fa";
+import { FaArrowRight, FaClock, FaHeart} from "react-icons/fa";
+import { CiLocationOn } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
@@ -14,7 +15,7 @@ const Destination = () => {
   );
   const toggleFavorite = (card) => {
     if (!user) {
-      alert("you need to login first")
+      alert("you need to login first");
       return;
     }
 
@@ -51,31 +52,31 @@ const Destination = () => {
   const filteredCard = data.filter((item) =>
     item.location.toLowerCase().includes(search.toLowerCase())
   );
-   useEffect(() => {
-     const checkUserRole = async () => {
-       // Fetch user role from the server
-       const response = await fetch(
-         `https://tour-utopia.vercel.app/checkUserRole/${user?.email}`,
-         {
-           method: "GET",
-           headers: {
-             "Content-Type": "application/json",
-           },
-         }
-       );
+  useEffect(() => {
+    const checkUserRole = async () => {
+      // Fetch user role from the server
+      const response = await fetch(
+        `https://tour-utopia.vercel.app/checkUserRole/${user?.email}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-       if (!response.ok) {
-         console.error("Failed to fetch user role");
-         return;
-       }
+      if (!response.ok) {
+        console.error("Failed to fetch user role");
+        return;
+      }
 
-       const data = await response.json();
-       console.log(data.isAdmin);
-       setIsAdmin(data.isAdmin);
-     };
+      const data = await response.json();
+      console.log(data.isAdmin);
+      setIsAdmin(data.isAdmin);
+    };
 
-     checkUserRole();
-   }, [user?.email]);
+    checkUserRole();
+  }, [user?.email]);
   return (
     <div className="">
       <div
@@ -129,9 +130,14 @@ const Destination = () => {
                 </div>
                 <div className="p-5">
                   <div className="flex flex-col gap-3">
-                    <p className="text-[#FF5522] font-bold text-lg">
-                      {item.location}
-                    </p>
+                    <div className="flex justify-between items-center">
+                      <p className="text-[#FF5522] font-bold text-lg">
+                        {item.location}
+                      </p>
+                      <Link target="_blank" to={item?.map}>
+                        <CiLocationOn className="text-[25px] text-[#FF5522]" />
+                      </Link>
+                    </div>
                     <h6 className="text-xl font-semibold text-[#6C7171]">
                       {item.name}
                     </h6>

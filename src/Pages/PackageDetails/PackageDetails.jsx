@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { FaClock, FaStar } from "react-icons/fa";
+import { FaArrowRight, FaClock, FaStar } from "react-icons/fa";
 import { loadStripe } from "@stripe/stripe-js";
+import { CiLocationOn } from "react-icons/ci";
 
 const PackageDetails = () => {
   const [data, setData] = useState([]);
@@ -254,20 +255,27 @@ const PackageDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center gap-5 py-10">
           {popularTour.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-2xl">
-              <Link to={`/package/${item._id}`}>
+              <div>
                 <div className="image-container rounded-t-2xl">
-                  <img
-                    className="rounded-t-2xl h-48 w-full object-cover"
-                    src={item.coverImage}
-                    alt=""
-                  />
+                  <div className="relative">
+                    <img
+                      className="rounded-t-2xl h-48 w-full object-cover"
+                      src={item.coverImage}
+                      alt=""
+                    />
+                  </div>
                   <div className="overlay"></div>
                 </div>
                 <div className="p-5">
                   <div className="flex flex-col gap-3">
-                    <p className="text-[#FF5522] font-bold text-lg">
-                      {item.location}
-                    </p>
+                    <div className="flex justify-between items-center">
+                      <p className="text-[#FF5522] font-bold text-lg">
+                        {item.location}
+                      </p>
+                      <Link target="_blank" to={item?.map}>
+                        <CiLocationOn className="text-[25px] text-[#FF5522]" />
+                      </Link>
+                    </div>
                     <h6 className="text-xl font-semibold text-[#6C7171]">
                       {item.name}
                     </h6>
@@ -285,19 +293,22 @@ const PackageDetails = () => {
                   </div>
                   <hr className="my-3" />
                   <div className="flex justify-between">
-                    <p className="flex items-center gap-1">
+                    {/* <p className="flex items-center gap-1">
                       <FaStar />
                       <span className="text-[#6C7171]">4.9</span>
-                    </p>
+                    </p> */}
                     <p className="text-[#6C7171]">
                       Start From:{" "}
                       <span className="text-[#FF5522] font-bold">
-                        ${item.price}
+                        {item.price}
                       </span>
                     </p>
+                    <Link to={`/package/${item._id}`}>
+                      <FaArrowRight className="text-[#FF5522] font-bold" />
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </div>

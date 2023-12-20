@@ -14,6 +14,7 @@ const AddPackage = () => {
     coverImage: "",
     duration: "",
     content: "",
+    map: "",
   });
 
   const handleSubmit = async (e) => {
@@ -52,6 +53,7 @@ const AddPackage = () => {
         coverImage: "",
         duration: "",
         content: "",
+        map: ""
       });
     } catch (error) {
       console.error("Error adding package:", error);
@@ -184,6 +186,20 @@ const AddPackage = () => {
             rows={6}
             className="p-2 border rounded-md w-full"
             value={formData.content}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Map
+          </label>
+          <input
+            required
+            placeholder="Map"
+            type="text"
+            name="map"
+            className="p-2 border rounded-md w-full"
+            value={formData.map}
             onChange={handleInputChange}
           />
         </div>

@@ -17,8 +17,6 @@ const Category = () => {
     <div className="py-10 lg:py-28">
       <div className="max-w-screen-xl mx-auto px-5">
         <div className="text-center pb-6">
-          <p className="text-[#FF5522] font-semibold text-lg">Tour Category</p>
-          <h5 className="text-3xl font-bold">Pick A Tour Type</h5>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-6 justify-center items-center gap-5 ">
           {category.map((item) => (
