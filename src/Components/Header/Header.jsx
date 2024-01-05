@@ -13,6 +13,7 @@ const Header = () => {
     { id: 4, name: "Blog", url: "/blog" },
     { id: 5, name: "News", url: "/all-news" },
     { id: 6, name: "Contact", url: "/contact" },
+    { id: 7, name: "Chat", url: "/chat" },
   ];
 
   const [open, setOpen] = useState(false);

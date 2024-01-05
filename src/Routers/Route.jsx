@@ -29,6 +29,7 @@ import EditNews from "../Components/Dashboard/News/editNews/EditNews";
 import EditBlog from "../Components/Dashboard/Blogs/editBlog/editBlog";
 import Success from "./../Pages/Payment/Success";
 import Cancel from "./../Pages/Payment/Cancel";
+import Chat from "../Pages/chat/Chat";
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
         path: "/cancel",
         element: <Cancel />,
       },
+      {
+        path: "/chat",
+        element: <Chat />
+      }
     ],
   },
   {

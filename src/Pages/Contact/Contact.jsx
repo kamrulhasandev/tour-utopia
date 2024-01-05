@@ -8,15 +8,15 @@ const Contact = () => {
    e.preventDefault();
    emailjs
      .sendForm(
-       "service_we58kv4",
-       "template_00qsxhk",
+       "service_p15ftb9",
+       "template_0d1rn81",
        form.current,
-       "3XEVb64ek0BoB1JEE"
+       "H9L75vvG2urI01y4J"
      )
      .then(
        (result) => {
          console.log(result);
-         alert("message sent")
+         alert("message sent");
        },
        (error) => {
          console.log(error);
