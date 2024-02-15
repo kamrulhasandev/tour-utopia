@@ -7,7 +7,7 @@ const Chat = () => {
       <div className="flex justify-center">
         <iframe
           className="w-[400px] h-[calc(100vh-200px)]"
-          src="https://www.chatbase.co/chatbot-iframe/vu0sTSw3VvY6nAKNpRuAp"
+          src="https://www.chatbase.co/chatbot-iframe/s4hQC7lLk_zlEPoJvfI5f"
           width="100%"
           frameBorder="0"
         ></iframe>
