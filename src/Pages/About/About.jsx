@@ -23,7 +23,7 @@ const About = () => {
               alt=""
             />
             <div className="bg-green-500 w-36 absolute rounded-full h-36 flex flex-col items-center justify-center px-10 text-center top-52 text-white animate-bounce">
-              <h4 className="text-3xl font-bold">10</h4>
+              <h4 className="text-3xl font-bold">1</h4>
               <p className="text-lg font-bold">Successful Years</p>
             </div>
           </div>

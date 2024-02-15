@@ -29,7 +29,7 @@ const Contact = () => {
     <div>
       <div
         style={{
-          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url('./banner1.jpg')`,
+          backgroundImage: `linear-gradient(38deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 100%), url('./banner5.jpg')`,
         }}
         className="w-full bg-center bg-cover h-64 flex justify-center items-center pt-[64px]" // Adjust the height as needed
       >
@@ -46,7 +46,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-xl font-semibold text-[#6C7171]">Location</p>
-                <p className="text-[#6C7171]">1280, Mirpur DOHS, Dhaka</p>
+                <p className="text-[#6C7171]">Dhaka, Bangladesh</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -55,7 +55,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-xl font-semibold text-[#6C7171]">Phone</p>
-                <p className="text-[#6C7171]">+980175252</p>
+                <p className="text-[#6C7171]">+8801632228562</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -64,7 +64,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-xl font-semibold text-[#6C7171]">Email</p>
-                <p className="text-[#6C7171]">helo@gmail.com</p>
+                <p className="text-[#6C7171]">utopia@gmail.com</p>
               </div>
             </div>
           </div>
