@@ -1,4 +1,4 @@
-# Himalaya Tour and Travel Website [Visit](https://himalaya-travel.vercel.app/)
+# Himalaya Tour and Travel Website [Visit]([https://himalaya-travel.vercel.app/](https://peaceful-swan-6e70a0.netlify.app/))
 
 Welcome to the Himalaya Tour and Travel website! This project is a dynamic and responsive website built using React, Tailwind CSS, HTML, and JavaScript. The website is designed to provide users with a seamless and immersive experience as they explore various travel destinations and tour packages.
 
@@ -66,7 +66,7 @@ To run the project locally, follow these steps:
 
 ## Live Demo
 
-Visit the live demo of the Himalaya Tour and Travel website [here](https://himalaya-travel.vercel.app/).
+Visit the live demo of the Himalaya Tour and Travel website [here]([https://himalaya-travel.vercel.app](https://peaceful-swan-6e70a0.netlify.app/)/).
 
 ## Contact
 
